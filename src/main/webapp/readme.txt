@@ -6,7 +6,7 @@ Frame work
 5. shiro
 6. ehcache
 7. QueryDSL
-8. thymeleaf
+8. thymeleaf---
 
 bussiness integration
 1. base shiro Role and user Authotization
