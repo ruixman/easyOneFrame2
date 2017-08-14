@@ -17,11 +17,11 @@ if(e instanceof org.springframework.dao.DataIntegrityViolationException) {
 %>
 	<jsp:include page="/WEB-INF/views/error/403.jsp"/>
 <%
-} else if(e instanceof com.jspxcms.core.support.DeleteException) {
+} else if(e instanceof com.hfzs.framework.core.web.support.DeleteException) {
 %>
 	<jsp:include page="/WEB-INF/views/error/delete_exception.jsp"/>
 <%
-} else if(e instanceof com.jspxcms.core.support.CmsException) {
+} else if(e instanceof com.hfzs.framework.core.web.support.CmsException) {
 %>
 	<jsp:include page="/WEB-INF/views/error/cms_exception.jsp"/>
 <%

@@ -13,12 +13,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 import java.util.Map;
 
+@SuppressWarnings("SpringJavaAutowiringInspection")
 @Controller
 @RequestMapping("/sys")
 public class SystemController {
@@ -31,13 +34,19 @@ public class SystemController {
             HttpServletRequest request, org.springframework.ui.Model modelMap){
         Map<String, String[]> params = Servlets.getParamValuesMap(request, Constants.SEARCH_PREFIX);
 
-
-
         Page<SysUser> pagedList = sysUserService.findAll(params, pageable);
-        modelMap.addAttribute("pagedList", pagedList);
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = new ModelAndView("/sys/user-list");
+        modelAndView.addObject("pagedList",pagedList);
+        return modelAndView;
+    }
 
-        return new ModelAndView("/sys/user-list").addObject(modelMap);
+    @ResponseBody
+    @RequestMapping("/user/list.json")
+    public Page<SysUser> userList(@PageableDefault(sort = "id", direction = Sort.Direction.DESC) Pageable pageable,
+                                 HttpServletRequest request){
+        Map<String, String[]> params = null;
+        Page<SysUser> pagedList = sysUserService.findAll(params, pageable);
+        return pagedList;
     }
 
     @RequestMapping(value = "/user/{id:[0-9]+}")

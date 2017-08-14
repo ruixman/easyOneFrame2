@@ -9,11 +9,10 @@ import java.util.Date;
 /**
  * Created by Administrator on 2017/8/9.
  */
+@Entity
+@Table(name = "T_SYS_USER_INFO")
 public class SysUser {
-    @Entity
-    @Table(name = "T_SYS_USER_INFO")
-    @SuppressWarnings("serial")
-    public class User implements Serializable {
+
         private String id;
         private String name;
         private String psw;
@@ -433,7 +432,5 @@ public class SysUser {
         public void setLoginPWD(Integer loginPWD) {
             this.loginPWD = loginPWD;
         }
-
-    }
 }
 

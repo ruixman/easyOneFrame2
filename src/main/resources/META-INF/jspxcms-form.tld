@@ -11,7 +11,7 @@
 	<tag>
 		<description>Renders an HTML 'input' tag with type 'text'.</description>
 		<name>text</name>
-		<tag-class>com.jspxcms.common.web.tags.TextTag</tag-class>
+		<tag-class>com.hfzs.framework.core.web.tags.TextTag</tag-class>
 		<body-content>empty</body-content>
 		<attribute>
 			<description>HTML Standard Attribute</description>
@@ -199,7 +199,7 @@
 	<tag>
 		<description>Renders an HTML 'input' tag with type 'hidden'.</description>
 		<name>hidden</name>
-		<tag-class>com.jspxcms.common.web.tags.HiddenTag</tag-class>
+		<tag-class>com.hfzs.framework.core.web.tags.HiddenTag</tag-class>
 		<body-content>empty</body-content>
 		<attribute>
 			<description>HTML Standard Attribute</description>
@@ -327,7 +327,7 @@
 	<tag>
 		<description>Renders an HTML 'textarea'.</description>
 		<name>textarea</name>
-		<tag-class>com.jspxcms.common.web.tags.TextareaTag</tag-class>
+		<tag-class>com.hfzs.framework.core.web.tags.TextareaTag</tag-class>
 		<body-content>empty</body-content>
 		<attribute>
 			<description>HTML Standard Attribute</description>
@@ -503,7 +503,7 @@
 	<tag>
 		<description>Renders an HTML 'input' tag with type 'checkbox'.</description>
 		<name>checkbox</name>
-		<tag-class>com.jspxcms.common.web.tags.CheckboxTag</tag-class>
+		<tag-class>com.hfzs.framework.core.web.tags.CheckboxTag</tag-class>
 		<body-content>empty</body-content>
 		<attribute>
 			<description>HTML Standard Attribute</description>
@@ -649,7 +649,7 @@
 	<tag>
 		<description>Renders multiple HTML 'input' tags with type 'checkbox'.</description>
 		<name>checkboxes</name>
-		<tag-class>com.jspxcms.common.web.tags.CheckboxesTag</tag-class>
+		<tag-class>com.hfzs.framework.core.web.tags.CheckboxesTag</tag-class>
 		<body-content>empty</body-content>
 
 		<attribute>
@@ -826,7 +826,7 @@
 	<tag>
 		<description>Renders an HTML 'input' tag with type 'radio'.</description>
 		<name>radio</name>
-		<tag-class>com.jspxcms.common.web.tags.RadioTag</tag-class>
+		<tag-class>com.hfzs.framework.core.web.tags.RadioTag</tag-class>
 		<body-content>empty</body-content>
 		<attribute>
 			<description>HTML Standard Attribute</description>
@@ -984,7 +984,7 @@
 	<tag>
 		<description>Renders multiple HTML 'input' tags with type 'radio'.</description>
 		<name>radios</name>
-		<tag-class>com.jspxcms.common.web.tags.RadiosTag</tag-class>
+		<tag-class>com.hfzs.framework.core.web.tags.RadiosTag</tag-class>
 		<body-content>empty</body-content>		
 		<attribute>
 			<description>The Collection, Map or array of objects used to generate the 'input' tags with type 'radio'</description>
@@ -1153,7 +1153,7 @@
 	<tag>
 		<description>Renders a single HTML 'option'.</description>
 		<name>option</name>
-		<tag-class>com.jspxcms.common.web.tags.OptionTag</tag-class>
+		<tag-class>com.hfzs.framework.core.web.tags.OptionTag</tag-class>
 		<body-content>JSP</body-content>
 		<attribute>
 			<description>HTML Optional Attribute</description>
@@ -1274,7 +1274,7 @@
 	<tag>
 		<description>Renders a list of HTML 'option' tags. Sets 'selected' as appropriate based on bound value.</description>
 		<name>options</name>
-		<tag-class>com.jspxcms.common.web.tags.OptionsTag</tag-class>
+		<tag-class>com.hfzs.framework.core.web.tags.OptionsTag</tag-class>
 		<body-content>empty</body-content>
 		<attribute>
 			<description>The Collection, Map or array of objects used to generate the inner 'option' tags. This attribute is required unless the containing select's property for data binding is an Enum, in which case the enum's values are used.</description>

@@ -1144,37 +1144,37 @@
 	
 	<function>
 		<name>now</name>
-		<function-class>com.jspxcms.common.web.ElFunction</function-class>
+		<function-class>com.hfzs.common.web.ElFunction</function-class>
 		<function-signature>java.util.Date now()</function-signature>
 	</function>
 	<function>
 		<name>bool</name>
-		<function-class>com.jspxcms.common.web.ElFunction</function-class>
+		<function-class>com.hfzs.common.web.ElFunction</function-class>
 		<function-signature>boolean bool(java.lang.Object,java.lang.String)</function-signature>
 	</function>
 	<function>
 		<name>invoke</name>
-		<function-class>com.jspxcms.common.web.ElFunction</function-class>
+		<function-class>com.hfzs.common.web.ElFunction</function-class>
 		<function-signature>java.lang.Object invoke(java.lang.Object,java.lang.String)</function-signature>
 	</function>
 	<function>
 		<name>invoke1</name>
-		<function-class>com.jspxcms.common.web.ElFunction</function-class>
+		<function-class>com.hfzs.common.web.ElFunction</function-class>
 		<function-signature>java.lang.Object invoke(java.lang.Object,java.lang.String,java.lang.Object)</function-signature>
 	</function>
 	<function>
 		<name>invoke2</name>
-		<function-class>com.jspxcms.common.web.ElFunction</function-class>
+		<function-class>com.hfzs.common.web.ElFunction</function-class>
 		<function-signature>java.lang.Object invoke(java.lang.Object,java.lang.String,java.lang.Object,java.lang.Object)</function-signature>
 	</function>
 	<function>
 		<name>invoke3</name>
-		<function-class>com.jspxcms.common.web.ElFunction</function-class>
+		<function-class>com.hfzs.common.web.ElFunction</function-class>
 		<function-signature>java.lang.Object invoke(java.lang.Object,java.lang.String,java.lang.Object,java.lang.Object,java.lang.Object)</function-signature>
 	</function>
 	<function>
 		<name>invoke4</name>
-		<function-class>com.jspxcms.common.web.ElFunction</function-class>
+		<function-class>com.hfzs.common.web.ElFunction</function-class>
 		<function-signature>java.lang.Object invoke(java.lang.Object,java.lang.String,java.lang.Object,java.lang.Object,java.lang.Object,java.lang.Object)</function-signature>
 	</function>
 	<function>
@@ -1184,52 +1184,52 @@
 	</function>
 	<function>
 		<name>contains_co</name>
-		<function-class>com.jspxcms.common.web.ElFunction</function-class>
+		<function-class>com.hfzs.common.web.ElFunction</function-class>
 		<function-signature>boolean contains(java.util.Collection,java.lang.Object)</function-signature>
 	</function>
 	<function>
 		<name>contains_cso</name>
-		<function-class>com.jspxcms.common.web.ElFunction</function-class>
+		<function-class>com.hfzs.common.web.ElFunction</function-class>
 		<function-signature>boolean contains(java.util.Collection,java.lang.String,java.lang.Object)</function-signature>
 	</function>
 	<function>
 		<name>urlEncode</name>
-		<function-class>com.jspxcms.common.util.Strings</function-class>
+		<function-class>com.hfzs.common.util.Strings</function-class>
 		<function-signature>java.lang.String urlEncode(java.lang.String)</function-signature>
 	</function>
 	<function>
 		<name>urlDecode</name>
-		<function-class>com.jspxcms.common.util.Strings</function-class>
+		<function-class>com.hfzs.common.util.Strings</function-class>
 		<function-signature>java.lang.String urlDecode(java.lang.String)</function-signature>
 	</function>
 	<function>
 		<name>substringx_sis</name>
-		<function-class>com.jspxcms.common.util.Strings</function-class>
+		<function-class>com.hfzs.common.util.Strings</function-class>
 		<function-signature>boolean substring(java.lang.String,int,java.lang.String)</function-signature>
 	</function>
 	<function>
 		<name>substringx_si</name>
-		<function-class>com.jspxcms.common.util.Strings</function-class>
+		<function-class>com.hfzs.common.util.Strings</function-class>
 		<function-signature>boolean substring(java.lang.String,int)</function-signature>
 	</function>
 	<function>
 		<name>concat</name>
-		<function-class>com.jspxcms.common.util.Strings</function-class>
+		<function-class>com.hfzs.common.util.Strings</function-class>
 		<function-signature>java.lang.String concat(java.lang.String, java.lang.String)</function-signature>
 	</function>
 	<function>
 		<name>concat3</name>
-		<function-class>com.jspxcms.common.util.Strings</function-class>
+		<function-class>com.hfzs.common.util.Strings</function-class>
 		<function-signature>java.lang.String concat3(java.lang.String, java.lang.String, java.lang.String)</function-signature>
 	</function>
 	<function>
 		<name>concat4</name>
-		<function-class>com.jspxcms.common.util.Strings</function-class>
+		<function-class>com.hfzs.common.util.Strings</function-class>
 		<function-signature>java.lang.String concat4(java.lang.String, java.lang.String, java.lang.String, java.lang.String)</function-signature>
 	</function>
 	<function>
 		<name>bbcode</name>
-		<function-class>com.jspxcms.common.web.BBCode</function-class>
+		<function-class>com.hfzs.common.web.BBCode</function-class>
 		<function-signature>java.lang.String bbcode(java.lang.String)</function-signature>
 	</function>
 	

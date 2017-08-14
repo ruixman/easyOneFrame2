@@ -31,8 +31,8 @@ String[] args = null;
 if(exception instanceof org.springframework.web.util.NestedServletException) {
 	exception = ((org.springframework.web.util.NestedServletException) exception).getRootCause();
 }
-if(exception instanceof com.jspxcms.core.support.CmsException) {
-	args = ((com.jspxcms.core.support.CmsException) exception).getArgs();
+if(exception instanceof com.hfzs.framework.core.web.support.CmsException) {
+	args = ((com.hfzs.framework.core.web.support.CmsException) exception).getArgs();
 }
 %>
 <h1 class="type"><span class="title">提示信息：</span><strong class="message"><s:message code="<%=exception.getMessage()%>" text="<%=exception.getMessage()%>" arguments="<%=args%>"/></strong></h1>

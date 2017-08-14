@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -24,16 +25,16 @@ public class SysUserServiceImpl implements ISysUserService {
 
 
     @Autowired
-    private SysUserDao dao;
+    private SysUserDao sysUserDao;
 
 
     @Override
     public Page<SysUser> findAll(Map<String, String[]> params, Pageable pageable) {
-        //return dao.findAll(spec(params), pageable);
+        //return sysUserDao.findAll(spec(params), pageable);
 
-       String[] nickname=params.get("nickName");
+      // String[] nickname=params.get("nickName");
 
-       final String name=nickname[0];
+       final String name="";
 
         //使用spec进行封装，其实不如直接使用toPredicate
         Specification querySpecifi = new Specification<SysUser>() {
@@ -42,13 +43,13 @@ public class SysUserServiceImpl implements ISysUserService {
 
                 List<Predicate> predicates = new ArrayList<>();
 
-                if(null != name){
+                if(!StringUtils.isEmpty(name)){
                     predicates.add(criteriaBuilder.like(root.<String>get("name"), "%"+name+"%"));
                 }
                 return criteriaBuilder.and(predicates.toArray(new Predicate[predicates.size()]));
             }
         };
-        return dao.findAll(querySpecifi,pageable);
+        return sysUserDao.findAll(querySpecifi,pageable);
     }
 
     private Specification<SysUser> spec(Map<String, String[]> params) {
