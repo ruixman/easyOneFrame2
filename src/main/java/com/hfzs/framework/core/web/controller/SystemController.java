@@ -1,19 +1,19 @@
 package com.hfzs.framework.core.web.controller;
 
+import com.hfzs.common.util.PageDto;
 import com.hfzs.framework.Constants;
 import com.hfzs.framework.core.web.Servlets;
 import com.hfzs.framework.domain.SysUser;
 import com.hfzs.framework.service.impl.SysUserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.jaxb.SpringDataJaxb;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,24 +30,22 @@ public class SystemController {
     private SysUserServiceImpl sysUserService;
 
     @RequestMapping("/user/list")
-    public ModelAndView userList(@PageableDefault(sort = "id", direction = Sort.Direction.DESC) Pageable pageable,
-            HttpServletRequest request, org.springframework.ui.Model modelMap){
-        Map<String, String[]> params = Servlets.getParamValuesMap(request, Constants.SEARCH_PREFIX);
-
-        Page<SysUser> pagedList = sysUserService.findAll(params, pageable);
-        ModelAndView modelAndView = new ModelAndView("/sys/user-list");
-        modelAndView.addObject("pagedList",pagedList);
-        return modelAndView;
+    public ModelAndView userList(){
+        return new ModelAndView("/sys/user-list2");
     }
 
     @ResponseBody
     @RequestMapping("/user/list.json")
-    public Page<SysUser> userList(@PageableDefault(sort = "id", direction = Sort.Direction.DESC) Pageable pageable,
+    public Page<SysUser> userList(@RequestBody PageDto page,
+          //  @PageableDefault(sort = "id", direction = Sort.Direction.DESC) Pageable pageable,
                                  HttpServletRequest request){
+Pageable pageable = new PageRequest(page.getPage(),page.getLimit(),Sort.Direction.DESC,page.getSort().getFields());
         Map<String, String[]> params = null;
+//        Servlets.getParamValuesMap();
         Page<SysUser> pagedList = sysUserService.findAll(params, pageable);
         return pagedList;
     }
+
 
     @RequestMapping(value = "/user/{id:[0-9]+}")
     public ModelAndView views(@PathVariable Integer id, @RequestParam(defaultValue = "true") boolean isUpdate,

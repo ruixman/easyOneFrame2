@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Test</title>
-    <link rel="stylesheet" href="${ctx }/frame/layui/css/style.css">
+    <link rel="stylesheet" href="${ctx }/frame/static/css/style.css">
     <link rel="stylesheet" href="${ctx }/frame/layui/css/layui.css">
     <script src="${ctx }/frame/layui/layui.js"></script>
 
@@ -58,9 +58,9 @@
 </table>
 
 <!-- jQuery -->
-<script type="text/javascript" charset="utf8" src="${ctx }/commons/js/jquery-1.8.0.min.js"></script>
-<script type="text/javascript" src="${ctx }/commons/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="${ctx }/commons/layui/js/table-tool.js"></script>
+<script type="text/javascript" charset="utf8" src="${ctx }/frame/static/js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="${ctx }/frame/static/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="${ctx }/frame/static/js/table-tool.js"></script>
 <script type="text/javascript">
 
 
@@ -94,7 +94,7 @@
                 //$(row).children('td').eq(1).attr('style', 'text-align: center;')
             },
             columnDefs: [{
-                "targets": [0,6],  //列的样式名
+                "targets": [0,4],  //列的样式名
                 "orderable": false    //包含上样式名‘nosort’的禁止排序
             }],
             ajax: function (data, callback, settings) {
@@ -106,26 +106,25 @@
                 param.start = data.start;//开始的记录序号
                 param.page = (data.start / data.length)+1;//当前页码
 
-                //param.sort={};
+                param.sort={};
                 var sort={};
                 sort.fields='id';
                 sort.orders='asc';
                 param.sort={};
                 param.sort=sort;
-
-                //
-                //param.projectNo='ww';
-                param.fields='ww';
+//
+//                //
+//                //param.projectNo='ww';
+//                param.fields='ww';
 
                 util.fillFormData("#searchForm", param);
                 var oForm =$("#searchForm").serialize();
 
                 //alert("test"+JSON.stringify(oForm));
-
                 //ajax请求数据
                 $.ajax({
                     type: "POST",
-                    url: "${ctx}/sys/user/list2?",  //封装表单数据
+                    url: "${ctx}/sys/user/list.json",  //封装表单数据
                     cache: false,  //禁用缓存
                     //data: param,//传入组装的参数
                     data: JSON.stringify(param),//将对象序列化成JSON字符串
@@ -138,9 +137,9 @@
                         //封装返回数据
                         var returnData = {};
                         returnData.draw = data.draw;//这里直接自行返回了draw计数器,应该由后台返回
-                        returnData.recordsTotal = result.total;//返回数据全部记录
-                        returnData.recordsFiltered = result.total;//后台不实现过滤功能，每次查询均视作全部结果
-                        returnData.data = result.data;//返回的数据列表
+                        returnData.recordsTotal = result.totalElements;//返回数据全部记录
+                        returnData.recordsFiltered = result.totalElements;//后台不实现过滤功能，每次查询均视作全部结果
+                        returnData.data = result.content;//返回的数据列表
                         //console.log(returnData);
                         //调用DataTables提供的callback方法，代表数据已封装完成并传回DataTables进行渲染
                         //此时的数据需确保正确无误，异常判断应在执行此回调前自行处理完毕
@@ -156,7 +155,7 @@
                     return html;
                 }
                 },
-                { "data": "Id"},
+                { "data": "id"},
                 { "data": "name"},
                 { "data": "createTime"},
                 { "data": "id","mRender":function(data,type,full){
@@ -257,7 +256,7 @@
         fillFormData: function(form, obj) {
             var formEL = $(form);
             $.each(obj, function(index, item) {
-                debugger;
+               // debugger;
                 if(typeof(item)=='object'){
                     $.each(item, function(key, val) {
                         if($("#"+index+'.'+key).val()==undefined){
