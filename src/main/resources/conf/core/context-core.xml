@@ -6,7 +6,15 @@
 		http://www.springframework.org/schema/data/repository http://www.springframework.org/schema/data/repository/spring-repository.xsd
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd"
 	default-lazy-init="true">
-	
+
+	<bean class="com.hfzs.framework.core.web.ContextConfig" />
+
+
+	<!--<context:component-scan base-package="com.hfzs.framework.core.web" use-default-filters="false">-->
+	<!--<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+	<!--<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>-->
+	<!--</context:component-scan>-->
+
 	<!--<bean id="htmlDao" class="com.jspxcms.core.html.HtmlDaoImpl"/>-->
 	<!--<bean id="infoFulltextDao" class="com.jspxcms.core.fulltext.InfoFulltextDaoImpl"/>-->
 	<!--<bean id="sqlDao" class="com.jspxcms.core.repository.impl.SQLDaoImpl"/>-->

@@ -127,6 +127,14 @@
             <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-autoconfigure:1.5.2.RELEASE" />
             <element id="library" level="project" name="Maven: org.springframework:spring-core:4.3.7.RELEASE" />
             <element id="library" level="project" name="Maven: org.assertj:assertj-core:2.6.0" />
+            <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:3.0.1" />
+            <element id="library" level="project" name="Maven: org.apache.tomcat.embed:tomcat-embed-core:7.0.73" />
+            <element id="library" level="project" name="Maven: org.apache.tomcat.embed:tomcat-embed-el:7.0.73" />
+            <element id="library" level="project" name="Maven: org.apache.tomcat.embed:tomcat-embed-jasper:7.0.73" />
+            <element id="library" level="project" name="Maven: org.apache.tomcat.embed:tomcat-embed-logging-juli:9.0.0.M6" />
+            <element id="library" level="project" name="Maven: org.apache.tomcat.embed:tomcat-embed-websocket:7.0.73" />
+            <element id="library" level="project" name="Maven: org.eclipse.jdt.core.compiler:ecj:4.4.2" />
+            <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-tomcat:1.5.2.RELEASE" />
           </element>
         </element>
         <element id="javaee-facet-resources" facet="zhishenframe/web/Web" />

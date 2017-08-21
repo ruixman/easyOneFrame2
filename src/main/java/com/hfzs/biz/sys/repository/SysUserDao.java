@@ -1,7 +1,7 @@
-package com.hfzs.framework.repository;
+package com.hfzs.biz.sys.repository;
 
 import com.hfzs.framework.core.web.orm.MyJpaRepository;
-import com.hfzs.framework.domain.SysUser;
+import com.hfzs.biz.sys.domain.SysUser;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;

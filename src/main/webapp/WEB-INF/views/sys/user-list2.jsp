@@ -101,27 +101,7 @@
                 //显示加载动画
                 var loading = layer.load(0, {shade: false}); //0代表加载的风格，支持0-2
 
-                //封装请求参数
-                param.limit = data.length;//页面显示记录条数，在页面显示每页显示多少项的时候
-                param.start = data.start;//开始的记录序号
-                param.page = (data.start / data.length)+1;//当前页码
-
-                param.sort={};
-                var sort={};
-                sort.fields='id';
-                sort.orders='asc';
-                param.sort={};
-                param.sort=sort;
-//
-//                //
-//                //param.projectNo='ww';
-//                param.fields='ww';
-
-                util.fillFormData("#searchForm", param);
-                var oForm =$("#searchForm").serialize();
-
-                //alert("test"+JSON.stringify(oForm));
-                //ajax请求数据
+                param =userManage.getQueryCondition(data);
                 $.ajax({
                     type: "POST",
                     url: "${ctx}/sys/user/list.json",  //封装表单数据
@@ -157,10 +137,14 @@
                 },
                 { "data": "id"},
                 { "data": "name"},
-                { "data": "createTime"},
+                { "data": "createTime",
+                   "mRender":function (data,type,row,meta) {
+                       return $.myTime.UnixToDate(data/1000);
+                   }
+                },
                 { "data": "id","mRender":function(data,type,full){
                     var html="";
-                    html+='<button class="layui-btn layui-btn-small" onclick="viewDetails(\''+data+'\');">查看缴费</button>';
+                    html+='<button class="layui-btn layui-btn-small" onclick="viewDetails(\''+data+'\');">查看</button>';
                     html+='<button class="layui-btn layui-btn-small layui-btn-danger" data-id="'+data+'" >删除</button>';
                     return html;
                 }
@@ -168,7 +152,6 @@
             ]
         }).api();
         //此处需调用api()方法,否则返回的是JQuery对象而不是DataTables的API对象
-
 
         // 例:获取ids
         $(document).on('click','#btn-delete-all', function(){
@@ -191,7 +174,78 @@
 
     });
 
-    //查看详情
+
+    var userManage = {
+        getQueryCondition : function(data) {
+            var param = {};
+            //组装排序参数
+            debugger
+            if (data.order&&data.order.length&&data.order[0]) {
+                switch (data.order[0].column) {
+                    case 1:
+                        param.sort = "id";//数据库列名称
+                        break;
+                    case 2:
+                        param.sort = "name";//数据库列名称
+                        break;
+                    case 3:
+                        param.sort = "createTime";
+//                    case 2:
+//                        param.orderColumn = "carrier_status";//数据库列名称
+//                        break;
+//                    case 3:
+//                        param.orderColumn = "carrier_phone";//数据库列名称
+//                        break;
+                    default:
+                        param.sort = "id";//数据库列名称
+                        break;
+                }
+                //排序方式asc或者desc
+                param.asc = data.order[0].dir;
+            }
+
+//            var searchObj ={};
+//            searchObj.name=$("#projectNo").val();//查询条件
+//            param.searchObj=searchObj;
+
+
+            /******************************************************
+             * 封装条件成map<String ,String[]>
+             * String : Opera_Field
+             *     Opera:  条件如：EQ 等于，LIKE  CONTAIN, STARTWITH, ENDWITH, GT, LT, GTE, LTE, IN
+             *     其中IN 的数组为全部，其他只取数组中的第一个
+             ******************************************************/
+            var searchMap = {};
+            searchMap["EQ_name"]=[$("#projectNo").val()];
+
+
+            param.limit = data.length;//页面显示记录条数，在页面显示每页显示多少项的时候
+            param.start = data.start;//开始的记录序号
+            param.page = (data.start / data.length);//当前页码，jpa是基于0.
+
+
+
+            param.searchMap= searchMap;
+
+            param.draw = data.draw;
+            return param;
+        },
+        editItemInit : function(item) {
+            //编辑方法
+            alert("编辑"+item.id+"  "+item.name);
+        },
+        deleteItem : function(item) {
+            //删除
+            alert("删除"+item.id+"  "+item.name);
+        },
+        showItemDetail: function(item){
+            //点击行
+            alert("点击"+item.id+"  "+item.name);
+        }
+    };
+
+
+//查看详情
     function viewDetails(id){
         layer.open({
             type: 2
@@ -280,6 +334,64 @@
             else return false;
         }
     };
+
+
+
+    (function($) {
+        $.extend({
+            myTime: {
+                /**
+                 * 当前时间戳
+                 * @return <int>    unix时间戳(秒)
+                 */
+                CurTime: function(){
+                    return Date.parse(new Date())/1000;
+                },
+                /**
+                 * 日期 转换为 Unix时间戳
+                 * @param <string> 2014-01-01 20:20:20 日期格式
+                 * @return <int>    unix时间戳(秒)
+                 */
+                DateToUnix: function(string) {
+                    var f = string.split(' ', 2);
+                    var d = (f[0] ? f[0] : '').split('-', 3);
+                    var t = (f[1] ? f[1] : '').split(':', 3);
+                    return (new Date(
+                                    parseInt(d[0], 10) || null,
+                                    (parseInt(d[1], 10) || 1) - 1,
+                                    parseInt(d[2], 10) || null,
+                                    parseInt(t[0], 10) || null,
+                                    parseInt(t[1], 10) || null,
+                                    parseInt(t[2], 10) || null
+                            )).getTime() / 1000;
+                },
+                /**
+                 * 时间戳转换日期
+                 * @param <int> unixTime  待时间戳(秒)
+                 * @param <bool> isFull  返回完整时间(Y-m-d 或者 Y-m-d H:i:s)
+                 * @param <int> timeZone  时区
+                 */
+                UnixToDate: function(unixTime, isFull, timeZone) {
+                    if (typeof (timeZone) == 'number')
+                    {
+                        unixTime = parseInt(unixTime) + parseInt(timeZone) * 60 * 60;
+                    }
+                    var time = new Date(unixTime * 1000);
+                    var ymdhis = "";
+                    ymdhis += time.getUTCFullYear() + "-";
+                    ymdhis += (time.getUTCMonth()+1) + "-";
+                    ymdhis += time.getUTCDate();
+                    if (isFull === true)
+                    {
+                        ymdhis += " " + time.getUTCHours() + ":";
+                        ymdhis += time.getUTCMinutes() + ":";
+                        ymdhis += time.getUTCSeconds();
+                    }
+                    return ymdhis;
+                }
+            }
+        });
+    })(jQuery);
 
 </script>
 </body>

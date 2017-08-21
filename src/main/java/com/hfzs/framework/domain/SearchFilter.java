@@ -111,8 +111,7 @@ public class SearchFilter {
 					for (SearchFilter filter : filters) {
 						// nested path translate, 如Task的名为"user.name"的filedName,
 						// 转换为Task.user.name属性
-						String[] names = StringUtils.split(filter.fieldName,
-								".");
+						String[] names = StringUtils.split(filter.fieldName, ".");
 						Path exp = root;
 						for (int i = 0; i < names.length; i++) {
 							String name = names[i];
@@ -205,10 +204,12 @@ public class SearchFilter {
 			}
 			Operator operator = Operator.valueOf(names[0]);
 			String filedName = names[1];
+
 			Type type = Type.String;
 			if (names.length >= 3) {
 				type = Type.valueOf(names[2]);
 			}
+
 			Object[] ovalues = Type.convert(values, type, operator);
 			if (ArrayUtils.isEmpty(ovalues)) {
 				continue;

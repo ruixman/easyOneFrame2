@@ -1,4 +1,4 @@
-package com.hfzs.framework.domain;
+package com.hfzs.biz.sys.domain;
 
 import org.hibernate.annotations.GenericGenerator;
 
