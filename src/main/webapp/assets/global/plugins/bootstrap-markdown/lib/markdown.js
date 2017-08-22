@@ -245,14 +245,13 @@ Markdown.prototype.toTree = function toTree( source, custom_root ) {
   try {
     this.tree = custom_root || this.tree || [ "markdown" ];
 
-    blocks:
-    while ( blocks.length ) {
-      var b = this.processBlock( blocks.shift(), blocks );
+    while (blocks.length) {
+        var b = this.processBlock(blocks.shift(), blocks);
 
-      // Reference blocks and the like won't return any content
-      if ( !b.length ) continue;
+        // Reference blocks and the like won't return any content
+        if (!b.length) continue;
 
-      this.tree.push.apply( this.tree, b );
+        this.tree.push.apply(this.tree, b);
     }
     return this.tree;
   }
@@ -344,29 +343,30 @@ Markdown.dialects.Gruber = {
       // 4 spaces + content
       if ( !block.match( re ) ) return undefined;
 
-      block_search:
       do {
-        // Now pull out the rest of the lines
-        var b = this.loop_re_over_block(
-                  re, block.valueOf(), function( m ) { ret.push( m[1] ); } );
+          // Now pull out the rest of the lines
+          var b = this.loop_re_over_block(
+              re, block.valueOf(), function (m) {
+                  ret.push(m[1]);
+              });
 
-        if (b.length) {
-          // Case alluded to in first comment. push it back on as a new block
-          next.unshift( mk_block(b, block.trailing) );
-          break;
-        }
-        else if (next.length) {
-          // Check the next block - it might be code too
-          if ( !next[0].match( re ) ) break;
+          if (b.length) {
+              // Case alluded to in first comment. push it back on as a new block
+              next.unshift(mk_block(b, block.trailing));
+              break;
+          }
+          else if (next.length) {
+              // Check the next block - it might be code too
+              if (!next[0].match(re)) break;
 
-          // Pull how how many blanks lines follow - minus two to account for .join
-          ret.push ( block.trailing.replace(/[^\n]/g, '').substring(2) );
+              // Pull how how many blanks lines follow - minus two to account for .join
+              ret.push(block.trailing.replace(/[^\n]/g, '').substring(2));
 
-          block = next.shift();
-        }
-        else {
-          break;
-        }
+              block = next.shift();
+          }
+          else {
+              break;
+          }
       } while (true);
 
       return [ [ "code_block", ret.join("\n") ] ];
@@ -526,131 +526,130 @@ Markdown.dialects.Gruber = {
             i;
 
         // Loop to search over block looking for inner block elements and loose lists
-        loose_search:
-        while( true ) {
-          // Split into lines preserving new lines at end of line
-          var lines = block.split( /(?=\n)/ );
+        while (true) {
+            // Split into lines preserving new lines at end of line
+            var lines = block.split(/(?=\n)/);
 
-          // We have to grab all lines for a li and call processInline on them
-          // once as there are some inline things that can span lines.
-          var li_accumulate = "";
+            // We have to grab all lines for a li and call processInline on them
+            // once as there are some inline things that can span lines.
+            var li_accumulate = "";
 
-          // Loop over the lines in this block looking for tight lists.
-          for (var line_no = 0; line_no < lines.length; line_no++) {
-              var nl = "",
-                  l = lines[line_no].replace(/^\n/, function (n) {
-                      nl = n;
-                      return "";
-                  });
+            // Loop over the lines in this block looking for tight lists.
+            for (var line_no = 0; line_no < lines.length; line_no++) {
+                var nl = "",
+                    l = lines[line_no].replace(/^\n/, function (n) {
+                        nl = n;
+                        return "";
+                    });
 
-              // TODO: really should cache this
-              var line_re = regex_for_depth(stack.length);
+                // TODO: really should cache this
+                var line_re = regex_for_depth(stack.length);
 
-              m = l.match(line_re);
-              //print( "line:", uneval(l), "\nline match:", uneval(m) );
+                m = l.match(line_re);
+                //print( "line:", uneval(l), "\nline match:", uneval(m) );
 
-              // We have a list item
-              if (m[1] !== undefined) {
-                  // Process the previous list item, if any
-                  if (li_accumulate.length) {
-                      add(last_li, loose, this.processInline(li_accumulate), nl);
-                      // Loose mode will have been dealt with. Reset it
-                      loose = false;
-                      li_accumulate = "";
-                  }
+                // We have a list item
+                if (m[1] !== undefined) {
+                    // Process the previous list item, if any
+                    if (li_accumulate.length) {
+                        add(last_li, loose, this.processInline(li_accumulate), nl);
+                        // Loose mode will have been dealt with. Reset it
+                        loose = false;
+                        li_accumulate = "";
+                    }
 
-                  m[1] = expand_tab(m[1]);
-                  var wanted_depth = Math.floor(m[1].length / 4) + 1;
-                  //print( "want:", wanted_depth, "stack:", stack.length);
-                  if (wanted_depth > stack.length) {
-                      // Deep enough for a nested list outright
-                      //print ( "new nested list" );
-                      list = make_list(m);
-                      last_li.push(list);
-                      last_li = list[1] = ["listitem"];
-                  }
-                  else {
-                      // We aren't deep enough to be strictly a new level. This is
-                      // where Md.pl goes nuts. If the indent matches a level in the
-                      // stack, put it there, else put it one deeper then the
-                      // wanted_depth deserves.
-                      var found = false;
-                      for (i = 0; i < stack.length; i++) {
-                          if (stack[i].indent != m[1]) continue;
-                          list = stack[i].list;
-                          stack.splice(i + 1);
-                          found = true;
-                          break;
-                      }
+                    m[1] = expand_tab(m[1]);
+                    var wanted_depth = Math.floor(m[1].length / 4) + 1;
+                    //print( "want:", wanted_depth, "stack:", stack.length);
+                    if (wanted_depth > stack.length) {
+                        // Deep enough for a nested list outright
+                        //print ( "new nested list" );
+                        list = make_list(m);
+                        last_li.push(list);
+                        last_li = list[1] = ["listitem"];
+                    }
+                    else {
+                        // We aren't deep enough to be strictly a new level. This is
+                        // where Md.pl goes nuts. If the indent matches a level in the
+                        // stack, put it there, else put it one deeper then the
+                        // wanted_depth deserves.
+                        var found = false;
+                        for (i = 0; i < stack.length; i++) {
+                            if (stack[i].indent != m[1]) continue;
+                            list = stack[i].list;
+                            stack.splice(i + 1);
+                            found = true;
+                            break;
+                        }
 
-                      if (!found) {
-                          //print("not found. l:", uneval(l));
-                          wanted_depth++;
-                          if (wanted_depth <= stack.length) {
-                              stack.splice(wanted_depth);
-                              //print("Desired depth now", wanted_depth, "stack:", stack.length);
-                              list = stack[wanted_depth - 1].list;
-                              //print("list:", uneval(list) );
-                          }
-                          else {
-                              //print ("made new stack for messy indent");
-                              list = make_list(m);
-                              last_li.push(list);
-                          }
-                      }
+                        if (!found) {
+                            //print("not found. l:", uneval(l));
+                            wanted_depth++;
+                            if (wanted_depth <= stack.length) {
+                                stack.splice(wanted_depth);
+                                //print("Desired depth now", wanted_depth, "stack:", stack.length);
+                                list = stack[wanted_depth - 1].list;
+                                //print("list:", uneval(list) );
+                            }
+                            else {
+                                //print ("made new stack for messy indent");
+                                list = make_list(m);
+                                last_li.push(list);
+                            }
+                        }
 
-                      //print( uneval(list), "last", list === stack[stack.length-1].list );
-                      last_li = ["listitem"];
-                      list.push(last_li);
-                  } // end depth of shenegains
-                  nl = "";
-              }
+                        //print( uneval(list), "last", list === stack[stack.length-1].list );
+                        last_li = ["listitem"];
+                        list.push(last_li);
+                    } // end depth of shenegains
+                    nl = "";
+                }
 
-              // Add content
-              if (l.length > m[0].length) {
-                  li_accumulate += nl + l.substr(m[0].length);
-              }
-          } // tight_search
+                // Add content
+                if (l.length > m[0].length) {
+                    li_accumulate += nl + l.substr(m[0].length);
+                }
+            } // tight_search
 
-          if ( li_accumulate.length ) {
-            add( last_li, loose, this.processInline( li_accumulate ), nl );
-            // Loose mode will have been dealt with. Reset it
-            loose = false;
-            li_accumulate = "";
-          }
-
-          // Look at the next block - we might have a loose list. Or an extra
-          // paragraph for the current li
-          var contained = get_contained_blocks( stack.length, next );
-
-          // Deal with code blocks or properly nested lists
-          if (contained.length > 0) {
-            // Make sure all listitems up the stack are paragraphs
-            forEach( stack, paragraphify, this);
-
-            last_li.push.apply( last_li, this.toTree( contained, [] ) );
-          }
-
-          var next_block = next[0] && next[0].valueOf() || "";
-
-          if ( next_block.match(is_list_re) || next_block.match( /^ / ) ) {
-            block = next.shift();
-
-            // Check for an HR following a list: features/lists/hr_abutting
-            var hr = this.dialect.block.horizRule( block, next );
-
-            if (hr) {
-              ret.push.apply(ret, hr);
-              break;
+            if (li_accumulate.length) {
+                add(last_li, loose, this.processInline(li_accumulate), nl);
+                // Loose mode will have been dealt with. Reset it
+                loose = false;
+                li_accumulate = "";
             }
 
-            // Make sure all listitems up the stack are paragraphs
-            forEach( stack, paragraphify, this);
+            // Look at the next block - we might have a loose list. Or an extra
+            // paragraph for the current li
+            var contained = get_contained_blocks(stack.length, next);
 
-            loose = true;
-            continue;
-          }
-          break;
+            // Deal with code blocks or properly nested lists
+            if (contained.length > 0) {
+                // Make sure all listitems up the stack are paragraphs
+                forEach(stack, paragraphify, this);
+
+                last_li.push.apply(last_li, this.toTree(contained, []));
+            }
+
+            var next_block = next[0] && next[0].valueOf() || "";
+
+            if (next_block.match(is_list_re) || next_block.match(/^ /)) {
+                block = next.shift();
+
+                // Check for an HR following a list: features/lists/hr_abutting
+                var hr = this.dialect.block.horizRule(block, next);
+
+                if (hr) {
+                    ret.push.apply(ret, hr);
+                    break;
+                }
+
+                // Make sure all listitems up the stack are paragraphs
+                forEach(stack, paragraphify, this);
+
+                loose = true;
+                continue;
+            }
+            break;
         } // loose_search
 
         return ret;
