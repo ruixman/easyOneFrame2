@@ -1,6 +1,5 @@
 package com.hfzs.framework.core;
 
-import com.hfzs.framework.core.IBaseService;
 import com.hfzs.framework.domain.SearchFilter;
 import org.springframework.data.jpa.domain.Specification;
 
@@ -19,4 +18,8 @@ public class BaseServiceImpl<T> implements IBaseService<T> {
         Specification<T> sp = (Specification<T>) SearchFilter.spec(filters, entityClass);
         return sp;
     }
+
+//    public T getOne(String id){
+//        return null;
+//    }
 }

@@ -10,24 +10,15 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HomeController {
 
-//    @Autowired
-//    private ProjectServiceImpl projectService;
-
-    @RequestMapping(value = "/home")
+    @RequestMapping(value = {"/","/index.htm","/index.html","/index"})
     public ModelAndView index(){
 
-        //测试service数据：对象数据
-//        ProjectBank pb1= projectService.findOne("402884905af99efc015af9a23a230001");
-//        System.out.println(pb1.getAcctNo());
-//
-//        List<ProjectBank> list1= projectService.list();
-//        System.out.println(list1.size());
-
         //TODO:测试QueryDsl
-
 
         // TODO: 2017/7/21 加入shibo权限
 
         return  new ModelAndView("index");
     }
+
+
 }

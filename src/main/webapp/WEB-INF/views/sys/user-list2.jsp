@@ -19,7 +19,7 @@
 <fieldset class="layui-elem-field layui-field-title">
     <legend>
         <span class="layui-breadcrumb">
-            <a href="javascript:;">user </a>
+            <a href="javascript:;">系统管理 </a>
             <a><cite>用户管理</cite></a>
         </span>
     </legend>
@@ -62,7 +62,6 @@
 <script type="text/javascript" src="${ctx }/frame/static/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="${ctx }/frame/static/js/table-tool.js"></script>
 <script type="text/javascript">
-
 
     layui.use(['element','layer'], function(){
         var $ = layui.jquery,element = layui.element,layer = layui.layer;

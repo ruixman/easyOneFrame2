@@ -28,6 +28,12 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements ISys
         return sy;
     }
 
+    @Override
+    public SysUser getOne(String id) {
+        return sysUserDao.getOne(id);
+    }
+
+
 //    private Specification<SysUser> spec(Map<String, String[]> params) {
 //        Collection<SearchFilter> filters = SearchFilter.parse(params).values();
 //        Specification<SysUser> sp = SearchFilter.spec(filters, SysUser.class);

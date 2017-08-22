@@ -25,7 +25,7 @@ public class SystemController extends BaseAction{
 
     @RequestMapping("/user/list")
     public ModelAndView userList(){
-        return new ModelAndView("/sys/user-list2");
+        return new ModelAndView("/sys/user-list");
     }
 
     @ResponseBody
@@ -37,10 +37,13 @@ public class SystemController extends BaseAction{
         return pagedList;
     }
 
+    //@RequestMapping(value = "/user/{id:[0-9]+}")
+//    public ModelAndView views(@PathVariable String id, @RequestParam(defaultValue = "true") boolean isUpdate,
+//                              HttpServletRequest request, HttpServletResponse response) {
 
-    @RequestMapping(value = "/user/{id:[0-9]+}")
-    public ModelAndView views(@PathVariable Integer id, @RequestParam(defaultValue = "true") boolean isUpdate,
-                      HttpServletRequest request, HttpServletResponse response) {
-        return new ModelAndView("/sys/user").addObject("id",id);
+    @RequestMapping(value = "/user/{id}")
+    public ModelAndView views(@PathVariable String id) {
+        SysUser user = sysUserService.getOne(id);
+        return new ModelAndView("/sys/user").addObject("user",user);
     }
 }
