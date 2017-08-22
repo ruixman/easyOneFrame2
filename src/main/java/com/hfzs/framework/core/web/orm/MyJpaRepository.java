@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * JPA Repository 接口
  * 
- * @author liufang
+ * @author ruix
  * 
  * @param <T>
  * @param <ID>
@@ -20,5 +20,5 @@ public interface MyJpaRepository<T, ID extends Serializable> extends
 		JpaRepository<T, ID> {
 	List<T> findAll(Limitable limitable);
 	public Page<T> findAll(Specification<T> spec, Pageable pageable);
-//	public T save(Object o);
+
 }
