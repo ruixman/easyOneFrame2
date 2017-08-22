@@ -460,7 +460,7 @@ var deltaBufferTimer;
  
 function isTouchpad(deltaY) {
     if (!deltaY) return;
-    deltaY = Math.abs(deltaY)
+    deltaY = Math.abs(deltaY);
     deltaBuffer.push(deltaY);
     deltaBuffer.shift();
     clearTimeout(deltaBufferTimer);

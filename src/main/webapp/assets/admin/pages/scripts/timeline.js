@@ -22,7 +22,7 @@ var Timeline = function () {
             fillColor: '#BBD8E9',
             fillOpacity: 0.6
         });
-    }
+    };
 
     return {
         //main function to initiate map samples

@@ -64,7 +64,7 @@ var ComponentsDropdowns = function () {
             } else if (movie.synopsis !== undefined) {
                 markup += "<div class='movie-synopsis'>" + movie.synopsis + "</div>";
             }
-            markup += "</td></tr></table>"
+            markup += "</td></tr></table>";
             return markup;
         }
 
@@ -115,7 +115,7 @@ var ComponentsDropdowns = function () {
                 return m;
             } // we do not want to escape markup since we are displaying html in results
         });
-    }
+    };
 
     var handleSelect2Modal = function () {
 
@@ -179,7 +179,7 @@ var ComponentsDropdowns = function () {
             } else if (movie.synopsis !== undefined) {
                 markup += "<div class='movie-synopsis'>" + movie.synopsis + "</div>";
             }
-            markup += "</td></tr></table>"
+            markup += "</td></tr></table>";
             return markup;
         }
 
@@ -230,21 +230,21 @@ var ComponentsDropdowns = function () {
                 return m;
             } // we do not want to escape markup since we are displaying html in results
         });
-    }
+    };
 
     var handleBootstrapSelect = function() {
         $('.bs-select').selectpicker({
             iconBase: 'fa',
             tickIcon: 'fa-check'
         });
-    }
+    };
 
     var handleMultiSelect = function () {
         $('#my_multi_select1').multiSelect();
         $('#my_multi_select2').multiSelect({
             selectableOptgroup: true
         });
-    }
+    };
 
     return {
         //main function to initiate the module

@@ -10,7 +10,7 @@ var ComponentsFormTools2 = function() {
         $('#select_selectsplitter3').selectsplitter({
             selectSize: 5
         });
-    }
+    };
 
     var miniColors = function() {
         $('.demo').each(function() {
@@ -41,7 +41,7 @@ var ComponentsFormTools2 = function() {
             });
 
         });
-    }
+    };
 
     return {
         //main function to initiate the module

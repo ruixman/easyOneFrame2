@@ -117,7 +117,7 @@ var EcommerceIndex = function () {
                 }
             });
 
-    }
+    };
 
     var initChart2 = function() {
 
@@ -224,7 +224,7 @@ var EcommerceIndex = function () {
                 }
             });
 
-    }
+    };
 
     return {
 

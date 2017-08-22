@@ -26,23 +26,20 @@ var FormiCheck = function () {
                   radio_default = 'iradio_square';
                   checkbox = 'icheckbox_square' + colorTmp;
                   radio = 'iradio_square'  + colorTmp;
-                };
-
-                if (skin.hasClass('skin-flat')) {
+                }
+                  if (skin.hasClass('skin-flat')) {
                   checkbox_default = 'icheckbox_flat';
                   radio_default = 'iradio_flat';
                   checkbox = 'icheckbox_flat' + colorTmp;
                   radio = 'iradio_flat'  + colorTmp;
-                };
-
-                if (skin.hasClass('skin-line')) {
+                }
+                  if (skin.hasClass('skin-line')) {
                   checkbox_default = 'icheckbox_line';
                   radio_default = 'iradio_line';
                   checkbox = 'icheckbox_line' + colorTmp;
                   radio = 'iradio_line'  + colorTmp;
-                };
-
-                skin.find('.icheck').each(function() {
+                }
+                  skin.find('.icheck').each(function() {
                   var element = $(this).hasClass('state') ? $(this) : $(this).parent();
                   var element_class = element.attr('class').replace(checkbox, checkbox_default + color).replace(radio, radio_default + color);
                   element.attr('class', element_class);
@@ -50,7 +47,7 @@ var FormiCheck = function () {
 
                 skin.data('color', self.attr('class') ? self.attr('class') : 'black');
                 self.addClass('active');
-              };
+              }
             });
         }
     };

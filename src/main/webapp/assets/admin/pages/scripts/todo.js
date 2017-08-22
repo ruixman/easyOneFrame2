@@ -18,7 +18,7 @@ var Todo = function () {
         $(".todo-taskbody-tags").select2({
             tags: ["Testing", "Important", "Info", "Pending", "Completed", "Requested", "Approved"]
         });
-    }
+    };
 
     var _handleProjectListMenu = function() {
         if (Metronic.getViewPort().width <= 992) {
@@ -26,7 +26,7 @@ var Todo = function () {
         } else {
             $('.todo-project-list-content').removeClass("collapse").css("height", "auto");
         }
-    }
+    };
 
     // public functions
     return {

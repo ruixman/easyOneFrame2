@@ -67,7 +67,7 @@
 			}
 
 			return self;
-		}
+		};
 
 		// Tooltip
 		function Tooltip() {
@@ -98,7 +98,7 @@
 
 				// Append
 				self.map.append(this.el);
-			}
+			};
 
 			this.set = function(location) {
 				if (location) {
@@ -116,7 +116,7 @@
 
 					this.position(location);
 				}
-			}
+			};
 
 			this.show = function(location) {
 				if (location) {
@@ -155,7 +155,7 @@
 					// Making it visible
 					this.el.stop().show();
 				}
-			}
+			};
 
 			this.position = function() {
 				if (this.location) {
@@ -196,7 +196,7 @@
 					});
 					this.drop = /*this.el.outerHeight()*/ 240 + this.shift;
 				}
-			}
+			};
 
 			this.hide = function() {
 				var s = this;
@@ -253,7 +253,7 @@
 				}
 
 				self.map.append(this.el);
-			}
+			};
 
 			this.show = function(location) {
 				if (self.tooltip.location != location) {
@@ -263,7 +263,7 @@
 
 					this.el.stop().fadeIn(100);
 				}
-			}
+			};
 
 			this.position = function(location) {
 				var cx = self.map.offset().left + self.map.width() * location.x - self.container.offset().left,
@@ -297,7 +297,7 @@
 					marginTop: mt,
 					marginLeft: ml
 				});
-			}
+			};
 
 			this.hide = function() {
 				this.el.stop().fadeOut(200);
@@ -318,24 +318,24 @@
 					}
 					return false;
 				}
-			}
+			};
 
 			this.check = function(ease) {
 				var id = this.getUrlParam(this.param);
 				showLocation(id, ease, true);
-			}
+			};
 
 			this.getUrlParam = function(name) {
 				name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
 				var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
 					results = regex.exec(location.search);
 				return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-			}
+			};
 
 			this.update = function(id) {
 				var url = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + this.param + '=' + id;
 				window.history.pushState({path: url}, '', url);
-			}
+			};
 
 			// Clear
 			this.clear = function() {
@@ -354,16 +354,16 @@
 				$(window).on('hashchange', function() {
 					s.check(600);
 				});
-			}
+			};
 
 			this.check = function(ease) {
 				var id = location.hash.slice(this.param.length + 2);
 				showLocation(id, ease, true);
-			}
+			};
 
 			this.update = function(id) {
 				window.location.hash = this.param + '-' + id;
-			}
+			};
 
 			this.clear = function() {
 				window.location.hash = this.param;
@@ -386,19 +386,19 @@
 
 					zoomTo(x, y, self.scale / self.fitscale, 100);
 				});
-			}
+			};
 
 			this.addLayer = function(data) {
 				var layer = $('<div></div>').addClass('mapplic-minimap-layer').addClass(data.id).appendTo(this.el);
 				$('<img>').attr('src', data.minimap).addClass('mapplic-minimap-background').appendTo(layer);
 				$('<div></div>').addClass('mapplic-minimap-overlay').appendTo(layer);
 				$('<img>').attr('src', data.minimap).addClass('mapplic-minimap-active').appendTo(layer);
-			}
+			};
 
 			this.show = function(target) {
 				$('.mapplic-minimap-layer', this.el).hide();
 				$('.mapplic-minimap-layer.' + target, this.el).show();
-			}
+			};
 
 			this.update = function(x, y) {
 				var active = $('.mapplic-minimap-active', this.el);
@@ -458,7 +458,7 @@
 				this.notfound = $('<p></p>').addClass('mapplic-not-found').text('Nothing found. Please try a different search.').appendTo(listContainer);
 
 				if (!self.o.search) listContainer.css('padding-top', '0');
-			}
+			};
 
 			this.addCategories = function(categories) {
 				var list = this.list;
@@ -480,7 +480,7 @@
 						list.append(item);
 					});
 					}
-			}
+			};
 
 			this.addLocation = function(data) {
 				var item = $('<li></li>').addClass('mapplic-list-location').addClass('mapplic-list-shown');
@@ -497,7 +497,7 @@
 				}).appendTo(item);
 
 				if (data.thumbnail) $('<img>').attr('src', data.thumbnail).addClass('mapplic-list-thumbnail').appendTo(link);
-				$('<h4></h4>').text(data.title).appendTo(link)
+				$('<h4></h4>').text(data.title).appendTo(link);
 				$('<span></span>').html(data.about).appendTo(link);
 				var category = $('.mapplic-list-category[data-category="' + data.category + '"]');
 
@@ -506,7 +506,7 @@
 
 				// Count
 				$('.mapplic-list-count', category).text($('.mapplic-list-shown', category).length);
-			}
+			};
 
 			this.search = function(keyword) {
 				if (keyword) self.clear.fadeIn(100);
@@ -604,7 +604,7 @@
 
 					moveTo(self.x, self.y, self.scale, 400, 'easeInOutCubic');
 				});
-			}
+			};
 
 			this.update = function(scale) {
 				this.zoomin.removeClass('mapplic-disabled');
@@ -629,20 +629,20 @@
 					else s.goFull();
 
 				}).appendTo(self.container);
-			}
+			};
 
 			this.goFull = function() {
 				if (this.element.requestFullscreen) this.element.requestFullscreen();
 				else if(this.element.mozRequestFullScreen) this.element.mozRequestFullScreen();
 				else if(this.element.webkitRequestFullscreen) this.element.webkitRequestFullscreen();
 				else if(this.element.msRequestFullscreen) this.element.msRequestFullscreen();
-			}
+			};
 
 			this.exitFull = function() {
 				if (document.exitFullscreen) document.exitFullscreen();
 				else if(document.mozCancelFullScreen) document.mozCancelFullScreen();
 				else if(document.webkitExitFullscreen) document.webkitExitFullscreen();
-			}
+			};
 
 			this.isFull = function() {
 				if (window.innerHeight == screen.height) {
@@ -892,13 +892,13 @@
 
 			// Controls
 			if (self.o.zoom) addControls();
-		}
+		};
 
 		var addControls = function() {
 			var map = self.map,
 				mapbody = $('.mapplic-map-image', self.map);
 
-			document.ondragstart = function() { return false; } // IE drag fix
+			document.ondragstart = function() { return false; }; // IE drag fix
 
 			// Drag & drop
 			mapbody.on('mousedown', function(event) {
@@ -1035,7 +1035,7 @@
 
 				moveTo(self.x, self.y, self.scale, 100);
 			});
-		}
+		};
 
 		var switchLevel = function(target, tooltip) {
 			switch (target) {
@@ -1077,7 +1077,7 @@
 			else if (index == self.levelselect.get(0).length - 1) {
 				down.addClass('mapplic-disabled');
 			}
-		}
+		};
 
 		var getLocationData = function(id) {
 			var data = null;
@@ -1089,7 +1089,7 @@
 				});
 			});
 			return data;
-		}
+		};
 
 		var showLocation = function(id, duration, check) {
 			$.each(self.data.levels, function(index, layer) {
@@ -1134,7 +1134,7 @@
 			else x = minX/2;
 
 			return x;
-		}
+		};
 
 		var normalizeY = function(y) {
 			var minY = self.container.height() - self.contentHeight * self.scale;
@@ -1146,7 +1146,7 @@
 			else y = minY/2;
 
 			return y;
-		}
+		};
 
 		var normalizeScale = function(scale) {
 			if (scale < self.fitscale) scale = self.fitscale;
@@ -1155,7 +1155,7 @@
 			if (self.zoombuttons) self.zoombuttons.update(scale);
 
 			return scale;
-		}
+		};
 
 		var zoomTo = function(x, y, s, duration, easing, ry) {
 			duration = typeof duration !== 'undefined' ? duration : 400;
@@ -1167,7 +1167,7 @@
 			self.y = normalizeY(self.container.height() * ry - self.scale * self.contentHeight * y);
 
 			moveTo(self.x, self.y, self.scale, duration, easing);
-		}
+		};
 
 		var moveTo = function(x, y, scale, d, easing) {
 			if (scale !== undefined) {

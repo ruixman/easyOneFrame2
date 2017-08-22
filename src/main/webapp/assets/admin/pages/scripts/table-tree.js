@@ -25,7 +25,7 @@ var TableTree = function() {
             'types': { default: 'glyphicon glyphicon-folder-open', folder: 'glyphicon glyphicon-folder-open'},
             'inputWidth': '255px'
         });
-    }
+    };
 
     return {
 

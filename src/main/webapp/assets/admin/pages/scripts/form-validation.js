@@ -86,7 +86,7 @@ var FormValidation = function () {
             });
 
 
-    }
+    };
 
     // validation using icons
     var handleValidation2 = function() {
@@ -168,7 +168,7 @@ var FormValidation = function () {
             });
 
 
-    }
+    };
 
     // advance validation
     var handleValidation3 = function() {
@@ -184,7 +184,7 @@ var FormValidation = function () {
                 for(var instanceName in CKEDITOR.instances) {
                     CKEDITOR.instances[instanceName].updateElement();
                 }
-            })
+            });
 
             form3.validate({
                 errorElement: 'span', //default input error message container
@@ -310,7 +310,7 @@ var FormValidation = function () {
             $('.date-picker .form-control').change(function() {
                 form3.validate().element($(this)); //revalidate the chosen dropdown value and show error or success message for the input 
             })
-    }
+    };
 
     var handleWysihtml5 = function() {
         if (!jQuery().wysihtml5) {
@@ -323,7 +323,7 @@ var FormValidation = function () {
                 "stylesheets": ["../../assets/global/plugins/bootstrap-wysihtml5/wysiwyg-color.css"]
             });
         }
-    }
+    };
 
     return {
         //main function to initiate the module

@@ -31,7 +31,7 @@ var UIGeneral = function () {
                 });
             });
         }
-    }
+    };
 
     var handleDynamicPagination = function() {
         $('#dynamic_pager_demo1').bootpag({
@@ -54,7 +54,7 @@ var UIGeneral = function () {
         }).on('page', function(event, num){
             $("#dynamic_pager_content2").html("Page " + num + " content here"); // or some ajax content loading...
         });
-    }
+    };
 
     return {
         //main function to initiate the module

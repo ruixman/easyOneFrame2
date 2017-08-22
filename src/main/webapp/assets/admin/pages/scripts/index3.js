@@ -26,7 +26,7 @@ var Index = function() {
             var showMap = function(name) {
                 jQuery('.vmaps').hide();
                 jQuery('#vmap_' + name).show();
-            }
+            };
 
             var setMap = function(name) {
                 var data = {
@@ -68,7 +68,7 @@ var Index = function() {
                 map.show();
                 map.vectorMap(data);
                 map.hide();
-            }
+            };
 
             setMap("world");
             setMap("usa");

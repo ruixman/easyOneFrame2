@@ -7,7 +7,7 @@ var Custom = function () {
 
     var myFunc = function(text) {
         alert(text);
-    }
+    };
 
     // public functions
     return {

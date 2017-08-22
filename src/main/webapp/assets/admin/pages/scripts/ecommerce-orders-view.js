@@ -63,7 +63,7 @@ var EcommerceOrdersView = function () {
                 });
             }
         });
-    }
+    };
 
     var handleCreditMemos = function () {
 
@@ -103,7 +103,7 @@ var EcommerceOrdersView = function () {
             }
         });
 
-    }
+    };
 
     var handleShipment = function () {
 
@@ -136,7 +136,7 @@ var EcommerceOrdersView = function () {
                 ] // set first column as a default sort by asc
             }
         });
-    }
+    };
 
     var handleHistory = function () {
 
@@ -198,7 +198,7 @@ var EcommerceOrdersView = function () {
                 });
             }
         });
-    }
+    };
 
     var initPickers = function () {
         //init date pickers
@@ -214,7 +214,7 @@ var EcommerceOrdersView = function () {
             pickerPosition: (Metronic.isRTL() ? "bottom-right" : "bottom-left"),
             minuteStep: 10
         });
-    }
+    };
 
     return {
 

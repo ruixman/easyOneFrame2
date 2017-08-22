@@ -17,7 +17,7 @@ var UIConfirmations = function () {
         $('#bs_confirmation_demo_2').on('canceled.bs.confirmation', function () {
             alert('You canceled action #2');
         });
-    }
+    };
 
 
     return {

@@ -6,7 +6,7 @@ var EcommerceProducts = function () {
             rtl: Metronic.isRTL(),
             autoclose: true
         });
-    }
+    };
 
     var handleProducts = function() {
         var grid = new Datatable();
@@ -69,7 +69,7 @@ var EcommerceProducts = function () {
                 });
             }
         });
-    }
+    };
 
     return {
 

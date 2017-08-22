@@ -33,7 +33,7 @@ var UIBlockUI = function() {
                 Metronic.unblockUI('#blockui_sample_1_portlet_body');
             }, 2000);
         });
-    }
+    };
 
     var handleSample2 = function() {
 
@@ -70,7 +70,7 @@ var UIBlockUI = function() {
                 Metronic.stopPageLoading();
             }, 2000);
         });
-    }
+    };
 
     var handleSample3 = function() {
 
@@ -109,7 +109,7 @@ var UIBlockUI = function() {
         $('#blockui_sample_3_2_1').click(function() {
             Metronic.unblockUI('#blockui_sample_3_2_element');
         });
-    }
+    };
 
     var handleSample4 = function() {
 
@@ -147,7 +147,7 @@ var UIBlockUI = function() {
                 Metronic.unblockUI('#blockui_sample_4_portlet_body');
             }, 2000);
         });
-    }
+    };
 
 
     return {

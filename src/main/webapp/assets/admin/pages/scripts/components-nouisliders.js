@@ -11,7 +11,7 @@ var ComponentsNoUiSliders = function() {
                 'max': 100
             }
         });
-    }
+    };
 
     var demo2 = function() {
         $("#slider_1").noUiSlider({
@@ -24,7 +24,7 @@ var ComponentsNoUiSliders = function() {
             connect: true,
             handles: 2
         });
-    }
+    };
 
     var demo3 = function() {
         // slider 2
@@ -58,7 +58,7 @@ var ComponentsNoUiSliders = function() {
         // Do the same for the upper handle.
         $("#nonlinear").Link('upper').to($('#upper-value'));
         $("#nonlinear").Link('upper').to($('#upper-offset'), leftValue);
-    }
+    };
 
     var demo4 = function() {
         // Store the locked state and slider values.
@@ -135,7 +135,7 @@ var ComponentsNoUiSliders = function() {
         slider2.Link('lower').to(slider1, crossUpdate);
         slider2.Link('lower').to($("#slider2-span"));
 
-    }
+    };
 
     var demo5 = function() {
 
@@ -210,7 +210,7 @@ var ComponentsNoUiSliders = function() {
         $("#slider-date").Link('upper').to($("#event-end"), setDate);
 
 
-    }
+    };
 
     var demo6 = function() {
         $('#soft').noUiSlider({
@@ -235,7 +235,7 @@ var ComponentsNoUiSliders = function() {
             }
         });
 
-    }
+    };
 
     return {
         //main function to initiate the module

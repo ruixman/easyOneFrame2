@@ -18,7 +18,7 @@ var Widgets = function () {
 			skin: 'mapplic-dark',
 			zoom: true
 		});
-	}
+	};
 
 	var handleSparklineChart = function () {
 		$("#widget_sparkline_bar").sparkline([8, 7, 9, 8.5, 8, 8.2, 8, 8.5, 9, 8, 9], {
@@ -53,14 +53,14 @@ var Widgets = function () {
             barColor: '#9a7caf',
             negBarColor: '#e02222'
         });
-	}
+	};
     
     var handleCounter = function () {
         $('.counter').counterUp({
             delay: 10,
             time: 1000
         });
-    }
+    };
 
 	return {
 

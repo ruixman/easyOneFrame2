@@ -16,7 +16,7 @@ var ComponentsContextMenu = function () {
                 return true;
             }
         });
-    }
+    };
 
     var demo3 = function() {
         // Demo 3
@@ -42,7 +42,7 @@ var ComponentsContextMenu = function () {
         $('#context-menu2').on('hidden.bs.context', function (e) {
             console.log('after hide event');
         });
-    }
+    };
 
     return {
         //main function to initiate the module

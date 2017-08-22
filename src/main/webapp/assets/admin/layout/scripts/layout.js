@@ -62,7 +62,7 @@ var Layout = function () {
                 // url match condition         
                 if (path.length > 1 && url.substr(1, path.length - 1) == path.substr(1)) {
                     el = $(this);
-                    return; 
+
                 }
             });
         }

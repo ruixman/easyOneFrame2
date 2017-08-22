@@ -63,7 +63,7 @@ var UIAlertDialogApi = function () {
             });
             //end #demo_7
 
-    }
+    };
 
     var handleAlerts = function() {
         
@@ -83,7 +83,7 @@ var UIAlertDialogApi = function () {
 
         });
 
-    }
+    };
 
     return {
 

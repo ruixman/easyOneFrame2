@@ -82,7 +82,7 @@ var ChartsAmcharts = function() {
         $('#chart_1').closest('.portlet').find('.fullscreen').click(function() {
             chart.invalidateSize();
         });
-    }
+    };
 
     var initChartSample2 = function() {
         var chart = AmCharts.makeChart("chart_2", {
@@ -319,7 +319,7 @@ var ChartsAmcharts = function() {
         $('#chart_2').closest('.portlet').find('.fullscreen').click(function() {
             chart.invalidateSize();
         });
-    }
+    };
 
     var initChartSample3 = function() {
         var chart = AmCharts.makeChart("chart_3", {
@@ -426,7 +426,7 @@ var ChartsAmcharts = function() {
         $('#chart_3').closest('.portlet').find('.fullscreen').click(function() {
             chart.invalidateSize();
         });
-    }
+    };
 
     var initChartSample4 = function() {
         var chart = AmCharts.makeChart("chart_4", {
@@ -500,7 +500,7 @@ var ChartsAmcharts = function() {
         $('#chart_4').closest('.portlet').find('.fullscreen').click(function() {
             chart.invalidateSize();
         });
-    }
+    };
 
     var initChartSample5 = function() {
         var chart = AmCharts.makeChart("chart_5", {
@@ -635,7 +635,7 @@ var ChartsAmcharts = function() {
         $('#chart_5').closest('.portlet').find('.fullscreen').click(function() {
             chart.invalidateSize();
         });
-    }
+    };
 
     var initChartSample6 = function() {
         var chart = AmCharts.makeChart("chart_6", {
@@ -687,7 +687,7 @@ var ChartsAmcharts = function() {
         $('#chart_6').closest('.portlet').find('.fullscreen').click(function() {
             chart.invalidateSize();
         });
-    }
+    };
 
     var initChartSample7 = function() {
         var chart = AmCharts.makeChart("chart_7", {
@@ -748,7 +748,7 @@ var ChartsAmcharts = function() {
         $('#chart_7').closest('.portlet').find('.fullscreen').click(function() {
             chart.invalidateSize();
         });
-    }
+    };
 
     var initChartSample8 = function() {
         var chart = AmCharts.makeChart("chart_8", {
@@ -827,7 +827,7 @@ var ChartsAmcharts = function() {
         $('#chart_8').closest('.portlet').find('.fullscreen').click(function() {
             chart.invalidateSize();
         });
-    }
+    };
 
     var initChartSample9 = function() {
         var chart = AmCharts.makeChart("chart_9", {
@@ -882,7 +882,7 @@ var ChartsAmcharts = function() {
         $('#chart_9').closest('.portlet').find('.fullscreen').click(function() {
             chart.invalidateSize();
         });
-    }
+    };
 
     var initChartSample10 = function() {
         /*
@@ -2741,7 +2741,7 @@ var ChartsAmcharts = function() {
             var dataProvider = {
                 mapVar: AmCharts.maps.worldLow,
                 images: []
-            }
+            };
 
             // create circle for each country
             for (var i = 0; i < mapData.length; i++) {
@@ -2774,7 +2774,7 @@ var ChartsAmcharts = function() {
         $('#chart_10').closest('.portlet').find('.fullscreen').click(function() {
             map.invalidateSize();
         });
-    }
+    };
 
     var initChartSample11 = function() {
         // svg path for target icon
@@ -3043,7 +3043,7 @@ var ChartsAmcharts = function() {
         $('#chart_11').closest('.portlet').find('.fullscreen').click(function() {
             map.invalidateSize();
         });
-    }
+    };
 
     var initChartSample12 = function() {
         var chartData = [];
@@ -3223,7 +3223,7 @@ var ChartsAmcharts = function() {
         $('#chart_12').closest('.portlet').find('.fullscreen').click(function() {
             chart.invalidateSize();
         });
-    }
+    };
 
     return {
         //main function to initiate the module
