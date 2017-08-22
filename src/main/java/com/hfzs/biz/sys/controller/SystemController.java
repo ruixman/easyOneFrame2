@@ -30,7 +30,7 @@ public class SystemController extends BaseAction{
 
     @ResponseBody
     @RequestMapping("/user/list.json")
-    public Page<SysUser> userList(@RequestBody PageDto page, HttpServletRequest request) throws ClassNotFoundException {
+    public Page<SysUser> userList(@RequestBody PageDto page, HttpServletRequest request) {
         Pageable pageable= genPageAble(page);
         Map<String,String[]>  params=page.getSearchMap();
         Page<SysUser> pagedList = sysUserService.findAll(params, pageable);
