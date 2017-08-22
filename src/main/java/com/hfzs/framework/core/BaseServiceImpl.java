@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public class BaseServiceImpl<T> implements IBaseService<T> {
     @Override
-    public Specification<T> spec(Map<String, String[]> params) throws ClassNotFoundException {
+    public Specification<T> spec(Map<String, String[]> params)  {
         Collection<SearchFilter> filters = SearchFilter.parse(params).values();
         Class < T >  entityClass  =  (Class < T > ) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[ 0 ];
         Specification<T> sp = (Specification<T>) SearchFilter.spec(filters, entityClass);

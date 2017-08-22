@@ -1,5 +1,6 @@
 package com.hfzs.biz.sys.service.impl;
 
+import com.hfzs.common.util.Exceptions;
 import com.hfzs.framework.core.BaseServiceImpl;
 import com.hfzs.biz.sys.domain.SysUser;
 import com.hfzs.biz.sys.repository.SysUserDao;
@@ -21,9 +22,9 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements ISys
 
 
     @Override
-    public Page<SysUser> findAll(Map<String, String[]> params, Pageable pageable) throws ClassNotFoundException {
+    public Page<SysUser> findAll(Map<String, String[]> params, Pageable pageable)  {
 
-        Specification sp=spec(params);
+        Specification sp=spec(params) ;
         Page<SysUser> sy=sysUserDao.findAll(sp,pageable);
         return sy;
     }

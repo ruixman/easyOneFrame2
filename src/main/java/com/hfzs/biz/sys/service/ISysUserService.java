@@ -8,7 +8,7 @@ import java.util.Map;
 
 public interface ISysUserService {
 
-    public Page<SysUser> findAll(Map<String, String[]> params, Pageable pageable) throws ClassNotFoundException;
+    public Page<SysUser> findAll(Map<String, String[]> params, Pageable pageable);
 
     public SysUser getOne(String id);
 }
