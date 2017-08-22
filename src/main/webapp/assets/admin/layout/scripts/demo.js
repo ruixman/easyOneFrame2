@@ -264,7 +264,6 @@ var Demo = function() {
     };
 
     return {
-
         //main function to initiate the theme
         init: function() {
             // handles style customer tool

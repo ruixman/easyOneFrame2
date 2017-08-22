@@ -19,5 +19,7 @@ https://www.kancloud.cn/vip-admin/guide/327326
 
 shiro 权限
 http://blog.csdn.net/swingpyzf/article/details/46342023/
+不错的shiro 教程：
+http://jinnianshilongnian.iteye.com/blog/2019547
 
 jpa

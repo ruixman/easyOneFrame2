@@ -140,12 +140,9 @@
 <script type="text/javascript" src="${ctx}/assets/global/plugins/datatables/extensions/Scroller/js/dataTables.scroller.min.js"></script>
 <script type="text/javascript" src="${ctx}/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
 <!-- END PAGE LEVEL PLUGINS -->
-
-
 <!-- END JAVASCRIPTS -->
 
 <script type="text/javascript">
-
     var table;
     var param ={};
     jQuery(document).ready(function() {
@@ -231,17 +228,15 @@
                 { "data": "id","mRender":function(data,type,full){
                     var html="";
                     html+='<a class="btn green" href="#" onclick=detail("'+data+'")>查看</a>';
-                    html+='<button class="btn btn-danger" data-id="'+data+'" >删除</button>';
+                    html+='<a class="btn btn-danger" href="#" onclick=delete1("'+data+'")>删除</a>';
                     return html;
-                }
+                    }
                 }
             ]
         }).api();
 
         //查询按钮事件
-
         $("#searchBtn").click(function(){
-//            alert("hello");
             $.blockUI({ message: '<h1>正在载入数据...</h1>' });
             table.ajax.reload();
             $.unblockUI();
@@ -249,17 +244,30 @@
 
     });
 
-
     function detail(regCode){
         $("#detail-data").load("${ctx}/sys/user/"+regCode);
         $("#detail-modal").modal("show");
+    }
+
+    function delete1(id){
+        $.blockUI();
+        $.ajax({
+            type: "POST",
+            url: "${ctx}/sys/user/delete/"+id ,  //封装表单数据
+            datatype: "html",
+            success: function (result) {
+                //关闭加载层
+                $.unblockUI();
+                table.draw();
+            }
+        });
     }
     // 业务操作代码
     var userManage = {
         getQueryCondition : function(data) {
             var param = {};
             //组装排序参数
-            debugger
+//            debugger
             if (data.order&&data.order.length&&data.order[0]) {
                 switch (data.order[0].column) {
                     case 1:
@@ -330,13 +338,13 @@
                     var d = (f[0] ? f[0] : '').split('-', 3);
                     var t = (f[1] ? f[1] : '').split(':', 3);
                     return (new Date(
-                                    parseInt(d[0], 10) || null,
-                                    (parseInt(d[1], 10) || 1) - 1,
-                                    parseInt(d[2], 10) || null,
-                                    parseInt(t[0], 10) || null,
-                                    parseInt(t[1], 10) || null,
-                                    parseInt(t[2], 10) || null
-                            )).getTime() / 1000;
+                        parseInt(d[0], 10) || null,
+                        (parseInt(d[1], 10) || 1) - 1,
+                        parseInt(d[2], 10) || null,
+                        parseInt(t[0], 10) || null,
+                        parseInt(t[1], 10) || null,
+                        parseInt(t[2], 10) || null
+                    )).getTime() / 1000;
                 },
                 /**
                  * 时间戳转换日期
@@ -365,7 +373,6 @@
             }
         });
     })(jQuery);
-
 
 
     var util = {
@@ -486,7 +493,6 @@
             </div>
             <div class="modal-body">
                 <div id="detail-data" class="row">
-
 
                 </div>
             </div>

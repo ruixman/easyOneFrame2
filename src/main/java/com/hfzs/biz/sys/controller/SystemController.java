@@ -43,7 +43,14 @@ public class SystemController extends BaseAction{
 
     @RequestMapping(value = "/user/{id}")
     public ModelAndView views(@PathVariable String id) {
-        SysUser user = sysUserService.getOne(id);
+        SysUser user = sysUserService.findOne(id);
         return new ModelAndView("/sys/user").addObject("user",user);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/user/delete/{id}")
+    public String delete(@PathVariable String id){
+        this.sysUserService.delete(id);
+        return "success";
     }
 }

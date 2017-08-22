@@ -16,24 +16,25 @@ import java.util.Map;
 @Service
 public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements ISysUserService {
 
-
     @Autowired
     private SysUserDao sysUserDao;
 
-
-    @Override
-    public Page<SysUser> findAll(Map<String, String[]> params, Pageable pageable)  {
-
-        Specification sp=spec(params) ;
-        Page<SysUser> sy=sysUserDao.findAll(sp,pageable);
-        return sy;
+    public SysUser saveAndFlush(SysUser user){
+        return sysUserDao.saveAndFlush(user);
     }
 
-    @Override
-    public SysUser getOne(String id) {
-        return sysUserDao.getOne(id);
-    }
+//    @Override
+//    public Page<SysUser> findAll(Map<String, String[]> params, Pageable pageable)  {
+//
+//        Specification sp=spec(params) ;
+//        Page<SysUser> sy=sysUserDao.findAll(sp,pageable);
+//        return sy;
+//    }
 
+//    @Override
+//    public SysUser getOne(String id) {
+//        return sysUserDao.getOne(id);
+//    }
 
 //    private Specification<SysUser> spec(Map<String, String[]> params) {
 //        Collection<SearchFilter> filters = SearchFilter.parse(params).values();

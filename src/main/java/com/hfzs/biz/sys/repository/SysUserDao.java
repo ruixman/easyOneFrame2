@@ -10,6 +10,6 @@ import org.springframework.data.jpa.domain.Specification;
  * Created by Administrator on 2017/8/9.
  */
 public interface SysUserDao  extends MyJpaRepository<SysUser,String> {
-
-    public Page<SysUser> findAll(Specification<SysUser> spec, Pageable pageable);
+   // public Page<SysUser> findAll(Specification<SysUser> spec, Pageable pageable);
+    public void delete(SysUser user);
 }
