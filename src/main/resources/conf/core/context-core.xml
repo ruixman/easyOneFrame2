@@ -9,6 +9,18 @@
 
 	<bean class="com.hfzs.framework.core.web.ContextConfig" />
 
+	<!--<bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">-->
+		<!--<property name="databaseType" value="mysql" />-->
+		<!--<property name="dataSource" ref="activitiDataSource" />-->
+		<!--<property name="transactionManager" ref="transactionManager" />-->
+		<!--<property name="databaseSchemaUpdate" value="true" />-->
+		<!--<property name="jpaEntityManagerFactory" ref="em" />-->
+		<!--<property name="jpaHandleTransaction" value="true" />-->
+		<!--<property name="jpaCloseEntityManager" value="true" />-->
+		<!--<property name="deploymentResources"-->
+				  <!--value="classpath*:activiti/processWithJPA.bpmn" />-->
+		<!--<property name="jobExecutorActivate" value="false" />-->
+	<!--</bean>-->
 
 	<!--<context:component-scan base-package="com.hfzs.framework.core.web" use-default-filters="false">-->
 	<!--<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->

@@ -67,6 +67,8 @@
         <servlet-api.version>3.0.1</servlet-api.version>
         <jsp-api.version>2.2.1</jsp-api.version>
         <springloaded.version>1.2.7.RELEASE</springloaded.version>
+
+        <activiti.version>5.19.0.2</activiti.version>
     </properties>
     <dependencies>
         <!-- springboot web 依赖 -->
@@ -321,6 +323,31 @@
             <artifactId>tomcat-embed-logging-juli</artifactId>
             <version>RELEASE</version>
         </dependency>
+        <!--增加activiti-->
+        <!--<dependency>-->
+            <!--<groupId>org.activiti</groupId>-->
+            <!--<artifactId>activiti-spring-boot-starter-basic</artifactId>-->
+            <!--<version>${activiti.version}</version>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+            <!--<groupId>org.activiti</groupId>-->
+            <!--<artifactId>activiti-spring-boot-starter-rest-api</artifactId>-->
+            <!--<version>${activiti.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.activiti</groupId>-->
+            <!--<artifactId>activiti-spring</artifactId>-->
+            <!--<version>5.19.0.2</version>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+            <!--<groupId>org.activiti</groupId>-->
+            <!--<artifactId>activiti-engine</artifactId>-->
+            <!--<version>5.19.0.2</version>-->
+            <!--<scope>test</scope>-->
+        <!--</dependency>-->
+
     </dependencies>
     <build>
         <plugins>
