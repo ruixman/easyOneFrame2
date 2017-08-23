@@ -10,14 +10,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class TestActiviti {
-    @Autowired
-    RuntimeService runtimeService;
-    @Test
-    public void contextLoads() {
-        long count = runtimeService.createProcessInstanceQuery()
-                .count();
-        System.out.println(count);
-    }
+//    @Autowired
+//    RuntimeService runtimeService;
+//    @Test
+//    public void contextLoads() {
+//        long count = runtimeService.createProcessInstanceQuery()
+//                .count();
+//        System.out.println(count);
+//    }
 //
 //    作者：会灰的大飞狼
 //    链接：http://www.jianshu.com/p/6c9882693f35
