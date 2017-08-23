@@ -2,6 +2,7 @@
  * Created by xurui on 2017/8/22.
  */
 import com.hfzs.biz.sys.domain.SysUser;
+import com.hfzs.biz.sys.repository.SysUserDao;
 import com.hfzs.biz.sys.service.impl.SysUserServiceImpl;
 import com.hfzs.framework.core.web.Application;
 import org.apache.shiro.util.Assert;
@@ -13,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
+import java.util.List;
 
 
 @RunWith(SpringRunner.class)
@@ -22,6 +24,9 @@ public class Test1 {
 
     @Autowired
     private SysUserServiceImpl sysUserService;
+
+    @Autowired
+    private SysUserDao sysUserDao;
 
     @Test
     public void testSave(){
@@ -45,7 +50,11 @@ public class Test1 {
     @Test
     public void testJPA(){
 
-    }
+        List<SysUser> ls= sysUserDao.findByLoginName("admin");
+        Assert.isTrue(ls.size()==1);
 
+        int counts= sysUserDao.ifValidUser("admin","555555");
+        Assert.isTrue(counts==1);
+   }
 
 }
