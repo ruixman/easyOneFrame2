@@ -55,13 +55,13 @@ public class BaseServiceImpl<T> implements IBaseService<T> {
     }
 
     @Override
-    public List findAll() {
-        return null;
+    public List<T> findAll() {
+        return myJpaRepository.findAll();
     }
 
     @Override
-    public List findAll(Sort sort) {
-        return null;
+    public List<T> findAll(Sort sort) {
+        return this.myJpaRepository.findAll(sort);
     }
 
     @Override
@@ -91,7 +91,7 @@ public class BaseServiceImpl<T> implements IBaseService<T> {
 
     @Override
     public void delete(Iterable iterable) {
-
+         this.myJpaRepository.delete(iterable);
     }
 
     @Override
@@ -101,7 +101,7 @@ public class BaseServiceImpl<T> implements IBaseService<T> {
 
     @Override
     public void flush() {
-
+        this.myJpaRepository.flush();
     }
 
     @Override
@@ -116,7 +116,7 @@ public class BaseServiceImpl<T> implements IBaseService<T> {
 
     @Override
     public Object getOne(Serializable serializable) {
-        return null;
+        return this.findOne(serializable);
     }
 
     @Override
@@ -131,7 +131,6 @@ public class BaseServiceImpl<T> implements IBaseService<T> {
 
     @Override
     public T saveAndFlush(Object o) {
-
         return null;
     }
 
@@ -160,7 +159,4 @@ public class BaseServiceImpl<T> implements IBaseService<T> {
         return false;
     }
 
-//    public T getOne(String id){
-//        return null;
-//    }
 }

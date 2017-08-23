@@ -6,6 +6,7 @@ import com.hfzs.biz.sys.domain.SysUser;
 import com.hfzs.biz.sys.repository.SysUserDao;
 import com.hfzs.biz.sys.service.ISysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -19,6 +20,7 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements ISys
     @Autowired
     private SysUserDao sysUserDao;
 
+    @Transient
     public SysUser saveAndFlush(SysUser user){
         return sysUserDao.saveAndFlush(user);
     }
