@@ -1,3 +1,6 @@
+import com.hfzs.framework.core.web.Application;
+//import org.activiti.engine.RuntimeService;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,15 +11,19 @@ import org.springframework.test.context.junit4.SpringRunner;
  * Created by Administrator on 2017/8/22.
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = Application.class)
 public class TestActiviti {
 //    @Autowired
 //    RuntimeService runtimeService;
+
+//    @Test
+
 //    @Test
 //    public void contextLoads() {
 //        long count = runtimeService.createProcessInstanceQuery()
 //                .count();
 //        System.out.println(count);
+//        Assert.assertEquals(count,0);
 //    }
 //
 //    作者：会灰的大飞狼

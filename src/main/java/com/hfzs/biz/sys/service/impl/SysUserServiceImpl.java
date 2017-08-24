@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import javax.jdo.annotations.Transactional;
 import java.util.Map;
 
 @Service
@@ -20,7 +21,7 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements ISys
     @Autowired
     private SysUserDao sysUserDao;
 
-    @Transient
+    @Transactional
     public SysUser saveAndFlush(SysUser user){
         return sysUserDao.saveAndFlush(user);
     }

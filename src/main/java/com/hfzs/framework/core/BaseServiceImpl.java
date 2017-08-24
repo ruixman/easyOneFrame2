@@ -18,7 +18,7 @@ import java.util.Map;
 /**
  * Created by xurui on 2017/8/20.
  */
-public class BaseServiceImpl<T> implements IBaseService<T> {
+public class BaseServiceImpl<T>  {
 
     @Autowired
     private MyJpaRepository<T,String> myJpaRepository;
@@ -30,133 +30,133 @@ public class BaseServiceImpl<T> implements IBaseService<T> {
         return sp;
     }
 
-    @Override
+//    @Override
     public T save(Object o) {
         Object o1= new Object();
        // myJpaRepository.
         return null;
     }
 
-    @Override
+//    @Override
     public T findOne(Serializable serializable) {
         return this.myJpaRepository.findOne(serializable.toString());
     }
 
-    @Override
+//    @Override
     public Page<T> findAll(Map<String, String[]> params, Pageable pageable) {
         Specification<T> sp=spec(params) ;
         Page<T> sy=this.myJpaRepository.findAll(sp,pageable);
         return sy;
     }
 
-    @Override
+//    @Override
     public boolean exists(Serializable serializable) {
         return myJpaRepository.exists(serializable.toString());
     }
 
-    @Override
+//    @Override
     public List<T> findAll() {
         return myJpaRepository.findAll();
     }
 
-    @Override
+//    @Override
     public List<T> findAll(Sort sort) {
         return this.myJpaRepository.findAll(sort);
     }
 
-    @Override
+//    @Override
     public Page findAll(Pageable pageable) {
         return null;
     }
 
-    @Override
+//    @Override
     public List findAll(Iterable iterable) {
         return null;
     }
 
-    @Override
+//    @Override
     public long count() {
         return 0;
     }
 
-    @Override
+//    @Override
     public void delete(Serializable serializable) {
       this.myJpaRepository.delete(serializable.toString());
     }
 
-    @Override
+//    @Override
     public void delete(Object o) {
         //this.myJpaRepository.delete(T);
     }
 
-    @Override
+//    @Override
     public void delete(Iterable iterable) {
          this.myJpaRepository.delete(iterable);
     }
 
-    @Override
+//    @Override
     public void deleteAll() {
         this.myJpaRepository.deleteAll();
     }
 
-    @Override
+//    @Override
     public void flush() {
         this.myJpaRepository.flush();
     }
 
-    @Override
+//    @Override
     public void deleteInBatch(Iterable iterable) {
 
     }
 
-    @Override
+//    @Override
     public void deleteAllInBatch() {
 
     }
 
-    @Override
+//    @Override
     public Object getOne(Serializable serializable) {
         return this.findOne(serializable);
     }
 
-    @Override
+//    @Override
     public List findAll(Example example, Sort sort) {
         return null;
     }
 
-    @Override
-    public List findAll(Example example) {
-        return null;
-    }
+//    @Override
+//    public List findAll(Example example) {
+//        return null;
+//    }
 
-    @Override
-    public T saveAndFlush(Object o) {
-        return null;
-    }
-
-    @Override
-    public List save(Iterable iterable) {
-        return null;
-    }
-
-    @Override
-    public Object findOne(Example example) {
-        return null;
-    }
-
-    @Override
-    public Page findAll(Example example, Pageable pageable) {
-        return null;
-    }
-
-    @Override
-    public long count(Example example) {
-        return 0;
-    }
-
-    @Override
-    public boolean exists(Example example) {
-        return false;
-    }
+//    @Override
+//    public T saveAndFlush(Object o) {
+//        return null;
+//    }
+//
+//    @Override
+//    public List save(Iterable iterable) {
+//        return null;
+//    }
+//
+//    @Override
+//    public Object findOne(Example example) {
+//        return null;
+//    }
+//
+//    @Override
+//    public Page findAll(Example example, Pageable pageable) {
+//        return null;
+//    }
+//
+//    @Override
+//    public long count(Example example) {
+//        return 0;
+//    }
+//
+//    @Override
+//    public boolean exists(Example example) {
+//        return false;
+//    }
 
 }

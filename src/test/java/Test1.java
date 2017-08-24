@@ -1,8 +1,10 @@
 /**
  * Created by xurui on 2017/8/22.
  */
+import com.hfzs.biz.sys.domain.Dept;
 import com.hfzs.biz.sys.domain.SysUser;
 import com.hfzs.biz.sys.repository.SysUserDao;
+import com.hfzs.biz.sys.service.impl.DeptServiceImpl;
 import com.hfzs.biz.sys.service.impl.SysUserServiceImpl;
 import com.hfzs.framework.core.web.Application;
 import org.apache.shiro.util.Assert;
@@ -27,6 +29,9 @@ public class Test1 {
 
     @Autowired
     private SysUserDao sysUserDao;
+
+    @Autowired
+    private DeptServiceImpl deptService;
 
     @Test
     public void testSave(){
@@ -56,5 +61,13 @@ public class Test1 {
         int counts= sysUserDao.ifValidUser("admin","555555");
         Assert.isTrue(counts==1);
    }
+
+    @Test
+    public void testJPA2(){
+
+        List<Dept> ls= deptService.findAll();
+        Assert.isTrue(ls.size()>1);
+
+    }
 
 }

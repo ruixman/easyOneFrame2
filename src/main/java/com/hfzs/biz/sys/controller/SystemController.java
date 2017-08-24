@@ -1,13 +1,14 @@
 package com.hfzs.biz.sys.controller;
 
 import com.hfzs.biz.sys.domain.SysTreeTest;
+import com.hfzs.biz.sys.service.ISysUserService;
 import com.hfzs.biz.sys.service.impl.SysTreeTestServiceImpl;
 import com.hfzs.common.util.JsonMapper;
 import com.hfzs.framework.core.BaseAction;
 import com.hfzs.framework.domain.dto.PageDto;
 import com.hfzs.biz.sys.domain.SysUser;
 import com.hfzs.biz.sys.service.impl.SysUserServiceImpl;
-import org.activiti.engine.RepositoryService;
+//import org.activiti.engine.RepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.data.domain.Page;
@@ -51,7 +52,7 @@ public class SystemController extends BaseAction {
 
     @RequestMapping(value = "/user/{id}")
     public ModelAndView views(@PathVariable String id) {
-        SysUser user = sysUserService.findOne(id);
+        SysUser user = (SysUser) sysUserService.findOne(id);
         return new ModelAndView("/sys/user").addObject("user", user);
     }
 
