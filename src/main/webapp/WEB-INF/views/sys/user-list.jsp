@@ -73,7 +73,7 @@
                     <div class="portlet">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-list"></i>查询
+                                <i class="fa fa-list"></i>查询a
                                 <label>
                                     姓名：
                                     <input id="extra1" type="text"  class="form-control input-inline">
@@ -117,6 +117,10 @@
                 </div>
             </div>
             <!-- END PAGE CONTENT-->
+
+
+            <div id="myTree"></div>
+
 
         </div>
     </div>
@@ -240,6 +244,44 @@
             $.blockUI({ message: '<h1>正在载入数据...</h1>' });
             table.ajax.reload();
             $.unblockUI();
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        $('#myTree').jstree({
+            'core' : {
+                'data' : {
+                    "url" : "${ctx}/sys/user/TreeTest",
+                    "dataType" : "json"
+                }
+            }
+        });
+
+        $('#myTree').on("changed.jstree", function (e, data) {
+            alert("id:" +data.selected[0]+  "\ntext:" +data.instance.get_node(data.selected[0]).text);
+
+            //刷新整个树
+            //$('#myTree').jstree().refresh();
+
+            //手册
+            //http://blog.csdn.net/qq_24472595/article/details/70053863#t9
         });
 
     });

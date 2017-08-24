@@ -23,6 +23,11 @@
 <link href="${ctx}/assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css"/>
 <link id="style_color" href="${ctx}/assets/admin/layout/css/themes/blue.css" rel="stylesheet" type="text/css"/>
 <link href="${ctx}/assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
+
+
+<link href="${ctx}/assets/global/plugins/jstree/dist/themes/default/style.css" rel="stylesheet" type="text/css"/>
+
+
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico"/>
 
