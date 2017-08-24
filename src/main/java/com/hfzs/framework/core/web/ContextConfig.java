@@ -21,8 +21,8 @@ import java.io.IOException;
 
 
 @Configuration
-@EntityScan({"com.hfzs.biz.sys.domain"})
-@EnableJpaRepositories(basePackages = {"com.hfzs.biz.sys.repository"}, repositoryFactoryBeanClass = MyJpaRepositoryFactoryBean.class)
+@EntityScan({"com.hfzs.biz.*.domain"})
+@EnableJpaRepositories(basePackages = {"com.hfzs.biz.*.repository"}, repositoryFactoryBeanClass = MyJpaRepositoryFactoryBean.class)
 @ComponentScan({"com.hfzs.biz.*.service.impl", "com.hfzs.biz.*.controller"})
 class ContextConfig {
 //class ContextConfig extends AbstractProcessEngineAutoConfiguration {

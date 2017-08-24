@@ -157,7 +157,7 @@
         Demo.init(); // init demo features
 
         //初始化表格
-        table = $("#sample_1").DataTable({
+        table = $("#sample_1").dataTable({
             dom: '<"top">rt<"bottom"flp><"clear">',//每页显示多少条选项 放置左下角
             language: {                           // 国际化
                 "url":'${ctx}/frame/i18n/Chinese.json'

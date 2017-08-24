@@ -1,5 +1,6 @@
 import com.hfzs.framework.core.web.Application;
 //import org.activiti.engine.RuntimeService;
+import org.activiti.engine.RuntimeService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,18 +14,18 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 public class TestActiviti {
-//    @Autowired
-//    RuntimeService runtimeService;
+    @Autowired
+    RuntimeService runtimeService;
 
 //    @Test
 
-//    @Test
-//    public void contextLoads() {
-//        long count = runtimeService.createProcessInstanceQuery()
-//                .count();
-//        System.out.println(count);
-//        Assert.assertEquals(count,0);
-//    }
+    @Test
+    public void contextLoads() {
+        long count = runtimeService.createProcessInstanceQuery()
+                .count();
+        System.out.println(count);
+        Assert.assertEquals(count,0);
+    }
 //
 //    作者：会灰的大飞狼
 //    链接：http://www.jianshu.com/p/6c9882693f35

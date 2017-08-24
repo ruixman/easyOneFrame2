@@ -323,18 +323,28 @@
             <artifactId>tomcat-embed-logging-juli</artifactId>
             <version>RELEASE</version>
         </dependency>
-        <!--增加activiti-->
-        <!--<dependency>-->
-            <!--<groupId>org.activiti</groupId>-->
-            <!--<artifactId>activiti-spring-boot-starter-basic</artifactId>-->
-            <!--<version>${activiti.version}</version>-->
-        <!--</dependency>-->
 
-        <!--<dependency>-->
-            <!--<groupId>org.activiti</groupId>-->
-            <!--<artifactId>activiti-spring-boot-starter-rest-api</artifactId>-->
-            <!--<version>${activiti.version}</version>-->
-        <!--</dependency>-->
+        <!-- 为了监控数据库 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.0.25</version>
+        </dependency>
+
+
+        <!--增加activiti-->
+        <dependency>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-spring-boot-starter-basic</artifactId>
+            <version>${activiti.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-spring-boot-starter-rest-api</artifactId>
+            <version>${activiti.version}</version>
+        </dependency>
+
         <!--<dependency>-->
             <!--<groupId>org.activiti</groupId>-->
             <!--<artifactId>activiti-spring</artifactId>-->
