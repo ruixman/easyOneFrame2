@@ -35,6 +35,7 @@ public class MySimpleJpaRepository<T, ID extends Serializable> extends
 		this(JpaEntityInformationSupport.getEntityInformation(domainClass, em),em);
 	}
 
+	@Override
 	public List<T> findAll(Limitable limitable) {
 		if (limitable != null) {
 			TypedQuery<T> query = getQuery(null, limitable.getSort());
@@ -56,6 +57,7 @@ public class MySimpleJpaRepository<T, ID extends Serializable> extends
 		em.refresh(entity);
 	}
 
+	@Override
 	public List<T> findAll(Specification<T> spec, Limitable limitable) {
 		if (limitable != null) {
 			TypedQuery<T> query = getQuery(spec, limitable.getSort());

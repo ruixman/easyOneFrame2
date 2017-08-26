@@ -21,4 +21,7 @@ public interface MyJpaRepository<T, ID extends Serializable> extends
 	List<T> findAll(Limitable limitable);
 	public Page<T> findAll(Specification<T> spec, Pageable pageable);
 
+//	@Override
+//	public T save(Object o);
+
 }

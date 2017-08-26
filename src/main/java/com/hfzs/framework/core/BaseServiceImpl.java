@@ -8,17 +8,18 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-/**
+/**基础服务实现类：封闭基础的方法，可传泛型参数
+ * @see com.hfzs.framework.core.IBaseService
  * Created by xurui on 2017/8/20.
  */
-public class BaseServiceImpl<T>  {
+public class BaseServiceImpl<T> implements IBaseService<T>{
 
     @Autowired
     private MyJpaRepository<T,String> myJpaRepository;
@@ -30,133 +31,134 @@ public class BaseServiceImpl<T>  {
         return sp;
     }
 
-//    @Override
-    public T save(Object o) {
-        Object o1= new Object();
-       // myJpaRepository.
-        return null;
-    }
-
-//    @Override
-    public T findOne(Serializable serializable) {
-        return this.myJpaRepository.findOne(serializable.toString());
-    }
-
-//    @Override
+    @Override
     public Page<T> findAll(Map<String, String[]> params, Pageable pageable) {
         Specification<T> sp=spec(params) ;
-        Page<T> sy=this.myJpaRepository.findAll(sp,pageable);
-        return sy;
+        return this.myJpaRepository.findAll(sp,pageable);
+        //return sy;
     }
 
-//    @Override
-    public boolean exists(Serializable serializable) {
-        return myJpaRepository.exists(serializable.toString());
-    }
-
-//    @Override
+    @Override
     public List<T> findAll() {
-        return myJpaRepository.findAll();
+        return this.myJpaRepository.findAll();
     }
 
-//    @Override
+    @Override
     public List<T> findAll(Sort sort) {
-        return this.myJpaRepository.findAll(sort);
+        return this.findAll(sort);
     }
 
-//    @Override
-    public Page findAll(Pageable pageable) {
-        return null;
+    @Override
+    public Page<T> findAll(Pageable pageable) {
+        return this.findAll(pageable);
     }
 
-//    @Override
-    public List findAll(Iterable iterable) {
-        return null;
+    @Override
+    public List<T> findAll(Iterable<String> iterable) {
+        return this.myJpaRepository.findAll(iterable);
     }
 
-//    @Override
+    @Override
     public long count() {
-        return 0;
+        return this.myJpaRepository.count();
     }
 
-//    @Override
-    public void delete(Serializable serializable) {
-      this.myJpaRepository.delete(serializable.toString());
+    @Transactional
+    @Override
+    public void delete(String s) {
+       this.myJpaRepository.delete(s);
     }
 
-//    @Override
-    public void delete(Object o) {
-        //this.myJpaRepository.delete(T);
+    @Override
+    public void delete(T t) {
+       this.myJpaRepository.delete(t);
     }
 
-//    @Override
-    public void delete(Iterable iterable) {
-         this.myJpaRepository.delete(iterable);
+    @Override
+    public void delete(Iterable<? extends T> iterable) {
+        this.myJpaRepository.delete(iterable);
     }
 
-//    @Override
+    @Override
     public void deleteAll() {
         this.myJpaRepository.deleteAll();
+
     }
 
-//    @Override
+    @Override
+    @Transactional
+    public <S extends T> S save(S s) {
+        return this.myJpaRepository.save(s);
+    }
+
+    @Override
+    public <S extends T> List<S> save(Iterable<S> iterable) {
+        return this.myJpaRepository.save(iterable);
+    }
+
+    @Override
+    public T findOne(String s) {
+        return this.myJpaRepository.findOne(s);
+    }
+
+    @Override
+    public boolean exists(String s) {
+        return this.myJpaRepository.exists(s);
+    }
+
+    @Override
     public void flush() {
         this.myJpaRepository.flush();
     }
 
-//    @Override
-    public void deleteInBatch(Iterable iterable) {
-
+    @Override
+    public <S extends T> S saveAndFlush(S s) {
+        return this.myJpaRepository.saveAndFlush(s);
     }
 
-//    @Override
+    @Override
+    public void deleteInBatch(Iterable<T> iterable) {
+        this.myJpaRepository.deleteInBatch(iterable);
+    }
+
+    @Override
     public void deleteAllInBatch() {
-
+        this.myJpaRepository.deleteAllInBatch();
     }
 
-//    @Override
-    public Object getOne(Serializable serializable) {
-        return this.findOne(serializable);
+    @Override
+    public T getOne(String s) {
+        return this.myJpaRepository.getOne(s);
     }
 
-//    @Override
-    public List findAll(Example example, Sort sort) {
+    @Override
+    public <S extends T> S findOne(Example<S> example) {
         return null;
     }
 
-//    @Override
-//    public List findAll(Example example) {
-//        return null;
-//    }
+    @Override
+    public <S extends T> List<S> findAll(Example<S> example) {
+        return null;
+    }
 
-//    @Override
-//    public T saveAndFlush(Object o) {
-//        return null;
-//    }
-//
-//    @Override
-//    public List save(Iterable iterable) {
-//        return null;
-//    }
-//
-//    @Override
-//    public Object findOne(Example example) {
-//        return null;
-//    }
-//
-//    @Override
-//    public Page findAll(Example example, Pageable pageable) {
-//        return null;
-//    }
-//
-//    @Override
-//    public long count(Example example) {
-//        return 0;
-//    }
-//
-//    @Override
-//    public boolean exists(Example example) {
-//        return false;
-//    }
+    @Override
+    public <S extends T> List<S> findAll(Example<S> example, Sort sort) {
+        return null;
+    }
+
+    @Override
+    public <S extends T> Page<S> findAll(Example<S> example, Pageable pageable) {
+        return null;
+    }
+
+    @Override
+    public <S extends T> long count(Example<S> example) {
+        return 0;
+    }
+
+    @Override
+    public <S extends T> boolean exists(Example<S> example) {
+        return false;
+    }
 
 }
