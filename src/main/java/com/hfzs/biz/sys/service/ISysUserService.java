@@ -8,9 +8,7 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.Map;
 
-public interface ISysUserService<T>{
+public interface ISysUserService<T> extends IBaseService<T>{
 
-//    public Page<SysUser> findAll(Map<String, String[]> params, Pageable pageable);
 
-//    public SysUser getOne(String id);
 }

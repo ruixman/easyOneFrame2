@@ -1,22 +1,18 @@
 package com.hfzs.biz.sys.service.impl;
 
-import com.hfzs.common.util.Exceptions;
 import com.hfzs.framework.core.BaseServiceImpl;
 import com.hfzs.biz.sys.domain.SysUser;
 import com.hfzs.biz.sys.repository.SysUserDao;
 import com.hfzs.biz.sys.service.ISysUserService;
+import org.apache.poi.ss.formula.functions.T;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.annotation.Transient;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import javax.jdo.annotations.Transactional;
+import javax.transaction.Transactional;
 import java.util.Map;
 
 @Service
-public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements ISysUserService {
+public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements ISysUserService<SysUser>{
 
     @Autowired
     private SysUserDao sysUserDao;
@@ -24,6 +20,7 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUser> implements ISys
     @Transactional
     public SysUser saveAndFlush(SysUser user){
         return sysUserDao.saveAndFlush(user);
+
     }
 
 //    @Override

@@ -1,16 +1,16 @@
 /**
  * Created by xurui on 2017/8/22.
  */
+
 import com.hfzs.biz.sys.domain.Dept;
 import com.hfzs.biz.sys.domain.SysUser;
 import com.hfzs.biz.sys.repository.SysUserDao;
+import com.hfzs.biz.sys.service.ISysUserService;
 import com.hfzs.biz.sys.service.impl.DeptServiceImpl;
-import com.hfzs.biz.sys.service.impl.SysUserServiceImpl;
 import com.hfzs.framework.core.web.Application;
 import org.apache.shiro.util.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -25,7 +25,7 @@ import java.util.List;
 public class Test1 {
 
     @Autowired
-    private SysUserServiceImpl sysUserService;
+    private ISysUserService<SysUser> sysUserService;
 
     @Autowired
     private SysUserDao sysUserDao;
@@ -37,18 +37,19 @@ public class Test1 {
     public void testSave(){
 
         SysUser u = new SysUser();
-        u.setName("hello");
-        u.setLoginName("ruixman");
+        u.setName("hello22312");
+        u.setLoginName("ruixman12_90");
         u.setPsw("ghiwrjiweoriow");
-        u.setAddress("长江容阿迪");
+        u.setAddress("长江容阿迪qwqwqwqwwqwq");
         u.setCreateTime(new Date());
 
-        sysUserService.saveAndFlush(u);
+        sysUserService.save(u);
 
-        Assert.notNull(u.getId());
-        sysUserService.getOne(u.getId());
+        SysUser u2=(SysUser)sysUserService.getOne(u.getId());
 
-        sysUserService.delete(u.getId());
+        Assert.notNull(u2);
+
+     //   sysUserService.delete(u.getId());
 
     }
 

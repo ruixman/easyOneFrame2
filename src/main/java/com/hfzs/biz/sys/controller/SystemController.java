@@ -1,20 +1,19 @@
 package com.hfzs.biz.sys.controller;
 
 import com.hfzs.biz.sys.domain.SysTreeTest;
+import com.hfzs.biz.sys.domain.SysUser;
 import com.hfzs.biz.sys.service.ISysUserService;
 import com.hfzs.biz.sys.service.impl.SysTreeTestServiceImpl;
-import com.hfzs.common.util.JsonMapper;
 import com.hfzs.framework.core.BaseAction;
 import com.hfzs.framework.domain.dto.PageDto;
-import com.hfzs.biz.sys.domain.SysUser;
-import com.hfzs.biz.sys.service.impl.SysUserServiceImpl;
-//import org.activiti.engine.RepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ImportResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +26,7 @@ import java.util.Map;
 public class SystemController extends BaseAction {
 
     @Autowired
-    private SysUserServiceImpl sysUserService;
+    private ISysUserService<SysUser> sysUserService;
 
     @Autowired
     private SysTreeTestServiceImpl sysTreeTestService;
@@ -46,9 +45,6 @@ public class SystemController extends BaseAction {
         return pagedList;
     }
 
-    //@RequestMapping(value = "/user/{id:[0-9]+}")
-//    public ModelAndView views(@PathVariable String id, @RequestParam(defaultValue = "true") boolean isUpdate,
-//                              HttpServletRequest request, HttpServletResponse response) {
 
     @RequestMapping(value = "/user/{id}")
     public ModelAndView views(@PathVariable String id) {
@@ -60,6 +56,7 @@ public class SystemController extends BaseAction {
     @RequestMapping(value = "/user/delete/{id}")
     public String delete(@PathVariable String id) {
         this.sysUserService.delete(id);
+
         return "success";
     }
 

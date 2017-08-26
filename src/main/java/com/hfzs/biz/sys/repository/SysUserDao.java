@@ -39,7 +39,7 @@ public interface SysUserDao  extends MyJpaRepository<SysUser,String> {
     public List<SysUser> findByLoginName1(String loginName);
 
 
-    //直接使用nativ uery,如此例需要用到md5函数，但可移殖性不好，不推荐。
+    //直接使用native uery,如此例需要用到md5函数，但可移殖性不好，不推荐。
     @Query(value = "select count(*) from t_sys_user_info where login_name= ?1 and password=md5(?2)",nativeQuery = true)
     public int ifValidUser(String name,String pwd);
 
