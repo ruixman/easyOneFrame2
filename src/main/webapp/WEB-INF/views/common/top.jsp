@@ -29,7 +29,7 @@
 					</a>
 					<ul class="dropdown-menu dropdown-menu-default">
 						<li>
-							<a href="${ctx}/logout.shtml">
+							<a href="${ctx}/logout">
 							<i class="icon-key"></i> 安全退出 </a>
 						</li>
 					</ul>

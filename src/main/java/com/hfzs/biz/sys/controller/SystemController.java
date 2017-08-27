@@ -6,6 +6,7 @@ import com.hfzs.biz.sys.service.ISysUserService;
 import com.hfzs.biz.sys.service.impl.SysTreeTestServiceImpl;
 import com.hfzs.framework.core.BaseAction;
 import com.hfzs.framework.domain.dto.PageDto;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,6 +33,7 @@ public class SystemController extends BaseAction {
     private SysTreeTestServiceImpl sysTreeTestService;
 
     @RequestMapping("/user/list")
+    @RequiresPermissions("sysUser:list")
     public ModelAndView userList() {
         return new ModelAndView("/sys/user-list");
     }
@@ -54,6 +56,7 @@ public class SystemController extends BaseAction {
 
     @ResponseBody
     @RequestMapping(value = "/user/delete/{id}")
+    @RequiresPermissions("sysUser:del")
     public String delete(@PathVariable String id) {
         this.sysUserService.delete(id);
 

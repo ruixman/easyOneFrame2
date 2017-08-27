@@ -317,7 +317,7 @@
              *     其中IN 的数组为全部，其他只取数组中的第一个
              ******************************************************/
             var searchMap = {};
-            searchMap["EQ_name"]=[$("#extra1").val()];
+            searchMap["LIKE_name"]=["%"+$("#extra1").val()+"%"];
 
             param.limit = data.length;//页面显示记录条数，在页面显示每页显示多少项的时候
             param.start = data.start;//开始的记录序号

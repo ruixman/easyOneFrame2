@@ -23,7 +23,7 @@ import java.io.IOException;
 @Configuration
 @EntityScan({"com.hfzs.biz.*.domain"})
 @EnableJpaRepositories(basePackages = {"com.hfzs.biz.*.repository"}, repositoryFactoryBeanClass = MyJpaRepositoryFactoryBean.class)
-@ComponentScan({"com.hfzs.biz.*.service.impl", "com.hfzs.biz.*.controller"})
+@ComponentScan({"com.hfzs.biz.*.service.impl", "com.hfzs.biz.*.controller","com.hfzs.biz.*.service"})
 class ContextConfig {
 //class ContextConfig extends AbstractProcessEngineAutoConfiguration {
 //static final String NAME = "master";
