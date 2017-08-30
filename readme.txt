@@ -1,8 +1,8 @@
 Frame work
 1. Spring boot config     ......DONE
 2. RESTful                ......DONE
-3. JPA (base)             ......DONE
-4. layUI frame            ......DONE
+3. JPA (Cap)             ......DONE
+4. Metronic              ......DONE
 5. shiro
 6. ehcache
 7. QueryDSL
