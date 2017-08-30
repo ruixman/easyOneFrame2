@@ -6,13 +6,7 @@ package com.hfzs.biz.sys.domain;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 
 
 /**
@@ -21,6 +15,7 @@ import javax.persistence.ManyToMany;
  * @version v.0.1
  */
 @Entity
+@Table(name="t_sys_role")
 public class SysRole implements Serializable{
     private static final long serialVersionUID = 1L;
     @Id@GeneratedValue

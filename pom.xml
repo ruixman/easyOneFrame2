@@ -68,7 +68,7 @@
         <jsp-api.version>2.2.1</jsp-api.version>
         <springloaded.version>1.2.7.RELEASE</springloaded.version>
 
-        <activiti.version>5.19.0.2</activiti.version>
+        <activiti.version>5.22.0</activiti.version>
     </properties>
     <dependencies>
         <!-- springboot web 依赖 -->
@@ -76,21 +76,21 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!-- springboot freemarker 依赖 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-freemarker</artifactId>
-        </dependency>
+        <!--&lt;!&ndash; springboot freemarker 依赖 &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-freemarker</artifactId>-->
+        <!--</dependency>-->
         <!-- springboot data jpa 依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <!-- springboot mail 依赖 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-mail</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-mail</artifactId>-->
+        <!--</dependency>-->
         <!-- springboot mobile 依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -134,16 +134,16 @@
             <artifactId>shiro-ehcache</artifactId>
             <version>${shiro.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-analyzers</artifactId>
-            <version>${lucene.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-highlighter</artifactId>
-            <version>${lucene.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.apache.lucene</groupId>-->
+            <!--<artifactId>lucene-analyzers</artifactId>-->
+            <!--<version>${lucene.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.lucene</groupId>-->
+            <!--<artifactId>lucene-highlighter</artifactId>-->
+            <!--<version>${lucene.version}</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.htmlparser</groupId>
             <artifactId>htmlparser</artifactId>
@@ -337,6 +337,7 @@
             <groupId>org.activiti</groupId>
             <artifactId>activiti-spring-boot-starter-basic</artifactId>
             <version>${activiti.version}</version>
+            <scope>pom</scope>
         </dependency>
 
         <!--<dependency>-->
@@ -345,18 +346,17 @@
             <!--<version>${activiti.version}</version>-->
         <!--</dependency>-->
 
-        <!--<dependency>-->
-            <!--<groupId>org.activiti</groupId>-->
-            <!--<artifactId>activiti-spring</artifactId>-->
-            <!--<version>5.19.0.2</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-spring</artifactId>
+            <version>${activiti.version}</version>
+        </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>org.activiti</groupId>-->
-            <!--<artifactId>activiti-engine</artifactId>-->
-            <!--<version>5.19.0.2</version>-->
-            <!--<scope>test</scope>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.activiti</groupId>
+            <artifactId>activiti-engine</artifactId>
+            <version>${activiti.version}</version>
+        </dependency>
 
     </dependencies>
     <build>

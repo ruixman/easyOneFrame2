@@ -1,7 +1,12 @@
 package com.hfzs.biz.sys.controller;
 
+import com.hfzs.biz.cms.domain.CmsArticle;
+import com.hfzs.biz.cms.domain.CmsChannel;
+import com.hfzs.biz.cms.repository.CmsChannelDao;
+import com.hfzs.biz.cms.service.impl.CmsArticleServiceImpl;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by Administrator on 2017/7/21.
@@ -17,8 +23,28 @@ import java.util.Map;
 @Controller
 public class HomeController {
 
+    @Autowired
+    private CmsArticleServiceImpl cmsArticleService;
+
+    @Autowired
+    private CmsChannelDao channelDao;
+
     @RequestMapping(value = {"/","/index.htm","/index.html","/index"})
     public ModelAndView index(){
+
+        CmsArticle article= cmsArticleService.getOne("402884825e311d8d015e311da4cc0001");
+
+        String title = article.getTitle();
+        CmsChannel channel = article.getChannel();
+        System.out.print(channel.getName());
+
+        CmsChannel channel1=channelDao.findOne("402884825e311d8d015e311da48c0000");
+        Set<CmsArticle> as=channel1.getArticleItem();
+
+        for(CmsArticle a:as){
+            System.out.print("标题是："+a.getTitle());
+        }
+
         return  new ModelAndView("index");
     }
 

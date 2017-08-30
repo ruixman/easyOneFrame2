@@ -9,33 +9,94 @@
 
 	<bean class="com.hfzs.framework.core.web.ContextConfig" />
 
-	<!--<bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">-->
-		<!--<property name="databaseType" value="mysql" />-->
-		<!--<property name="dataSource" ref="activitiDataSource" />-->
-		<!--<property name="transactionManager" ref="transactionManager" />-->
-		<!--<property name="databaseSchemaUpdate" value="true" />-->
-		<!--<property name="jpaEntityManagerFactory" ref="em" />-->
-		<!--<property name="jpaHandleTransaction" value="true" />-->
-		<!--<property name="jpaCloseEntityManager" value="true" />-->
-		<!--<property name="deploymentResources"-->
-				  <!--value="classpath*:activiti/processWithJPA.bpmn" />-->
-		<!--<property name="jobExecutorActivate" value="false" />-->
+	<!-- 设置Druid数据源 -->
+	<!--<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">-->
+		<!--&lt;!&ndash; 数据源URL &ndash;&gt;-->
+		<!--<property name="url" value="${url}"/>-->
+		<!--&lt;!&ndash; 数据库用户名 &ndash;&gt;-->
+		<!--<property name="username" value="${db.username}"/>-->
+		<!--&lt;!&ndash; 数据库密码 &ndash;&gt;-->
+		<!--<property name="password" value="${db.password}"/>-->
+		<!--&lt;!&ndash; 数据库驱动 &ndash;&gt;-->
+		<!--<property name="driverClassName" value="${driverClassName}"/>-->
+
+		<!--&lt;!&ndash; 属性类型是字符串，通过别名的方式配置扩展插件，常用的插件有： 监控统计用的filter:stat 日志用的filter:log4j 防御sql注入的filter:wall &ndash;&gt;-->
+		<!--<property name="filters" value="${filters}"/>-->
+
+		<!--&lt;!&ndash; 最大连接池数量 &ndash;&gt;-->
+		<!--<property name="maxActive" value="${maxActive}"/>-->
+		<!--&lt;!&ndash; 初始化时建立物理连接的个数 &ndash;&gt;-->
+		<!--<property name="initialSize" value="${initialSize}"/>-->
+		<!--&lt;!&ndash; 获取连接时最大等待时间，单位毫秒 &ndash;&gt;-->
+		<!--<property name="maxWait" value="${maxWait}"/>-->
+		<!--&lt;!&ndash; 最小连接池数量 &ndash;&gt;-->
+		<!--<property name="minIdle" value="${minIdle}"/>-->
+
+		<!--&lt;!&ndash; 有两个含义：-->
+            <!--1) Destroy线程会检测连接的间隔时间-->
+            <!--2) testWhileIdle的判断依据，详细看testWhileIdle属性的说明 &ndash;&gt;-->
+		<!--<property name="timeBetweenEvictionRunsMillis" value="${timeBetweenEvictionRunsMillis}"/>-->
+
+		<!--<property name="minEvictableIdleTimeMillis" value="${minEvictableIdleTimeMillis}"/>-->
+
+		<!--&lt;!&ndash; 用来检测连接是否有效的sql，要求是一个查询语句,如果validationQuery为null，testOnBorrow、testOnReturn、 testWhileIdle都不会其作用 &ndash;&gt;-->
+		<!--<property name="validationQuery" value="${validationQuery}"/>-->
+		<!--&lt;!&ndash; 建议配置为true，不影响性能，并且保证安全性。 申请连接的时候检测，如果空闲时间大于 timeBetweenEvictionRunsMillis，执行validationQuery检测连接是否有效。&ndash;&gt;-->
+		<!--<property name="testWhileIdle" value="${testWhileIdle}"/>-->
+		<!--&lt;!&ndash; 申请连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。 &ndash;&gt;-->
+		<!--<property name="testOnBorrow" value="${testOnBorrow}"/>-->
+		<!--&lt;!&ndash; 归还连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能 &ndash;&gt;-->
+		<!--<property name="testOnReturn" value="${testOnReturn}"/>-->
+		<!--&lt;!&ndash; 要启用PSCache，必须配置大于0，当大于0时，poolPreparedStatements自动触发修改为true。在Druid中，不会存在Oracle下PSCache占用内存过多的问题，可以把这个数值配置大一些，比如说100 &ndash;&gt;-->
+		<!--&lt;!&ndash;<property name="maxOpenPreparedStatements" value="${maxOpenPreparedStatements}"/>&ndash;&gt;-->
+		<!--&lt;!&ndash; 打开removeAbandoned功能 &ndash;&gt;-->
+		<!--<property name="removeAbandoned" value="${removeAbandoned}"/>-->
+		<!--&lt;!&ndash; 1800秒，也就是30分钟 &ndash;&gt;-->
+		<!--<property name="removeAbandonedTimeout" value="${removeAbandonedTimeout}"/>-->
+		<!--&lt;!&ndash; 关闭abanded连接时输出错误日志 &ndash;&gt;-->
+		<!--<property name="logAbandoned" value="${logAbandoned}"/>-->
 	<!--</bean>-->
 
-	<!--<context:component-scan base-package="com.hfzs.framework.core.web" use-default-filters="false">-->
-	<!--<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
-	<!--<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>-->
-	<!--</context:component-scan>-->
+	<!--<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">-->
+		<!--<property name="entityManagerFactory" ref="entityManagerFactory"/>-->
+	<!--</bean>-->
 
-	<!--<bean id="htmlDao" class="com.jspxcms.core.html.HtmlDaoImpl"/>-->
-	<!--<bean id="infoFulltextDao" class="com.jspxcms.core.fulltext.InfoFulltextDaoImpl"/>-->
-	<!--<bean id="sqlDao" class="com.jspxcms.core.repository.impl.SQLDaoImpl"/>-->
-	<!---->
-	<!--<bean id="infoFulltextService" class="com.jspxcms.core.fulltext.InfoFulltextServiceImpl"/>-->
-	<!--<bean id="infoFulltextGenerator" class="com.jspxcms.core.fulltext.InfoFulltextGeneratorImpl"/>-->
-	<!--<bean id="infoFulltextListener" class="com.jspxcms.core.fulltext.InfoFulltextListener"/>-->
-	<!--<bean id="htmlService" class="com.jspxcms.core.html.HtmlServiceImpl"/>-->
-	<!--<bean id="htmlGenerator" class="com.jspxcms.core.html.HtmlGeneratorImpl"/>-->
-	<!---->
-  <!--<bean id="collector" class="com.jspxcms.ext.collect.CollectorImpl"/>-->
+	<!--&lt;!&ndash;&lt;!&ndash; Activiti begin &ndash;&gt;&ndash;&gt;-->
+	<!--<bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">-->
+		<!--<property name="dataSource" ref="dataSource" />-->
+		<!--<property name="transactionManager" ref="transactionManager" />-->
+		<!--<property name="databaseSchemaUpdate" value="true" />-->
+		<!--<property name="jobExecutorActivate" value="true" />-->
+		<!--<property name="history" value="full" />-->
+		<!--<property name="activityFontName" value="宋体"/>-->
+		<!--<property name="labelFontName" value="宋体"/>-->
+		<!--&lt;!&ndash; 自动部署 &ndash;&gt;-->
+		<!--&lt;!&ndash; <property name="deploymentResources">-->
+			<!--<list>-->
+				<!--<value>classpath*:/deployments/*</value>-->
+			<!--</list>-->
+		<!--</property> &ndash;&gt;-->
+
+		<!--&lt;!&ndash; 自定义表单字段类型 &ndash;&gt;-->
+		<!--&lt;!&ndash;<property name="customFormTypes">&ndash;&gt;-->
+			<!--&lt;!&ndash;<list>&ndash;&gt;-->
+				<!--&lt;!&ndash;<bean class="com.gjintel.workflow.activiti.form.UsersFormType" />&ndash;&gt;-->
+			<!--&lt;!&ndash;</list>&ndash;&gt;-->
+		<!--&lt;!&ndash;</property>&ndash;&gt;-->
+	<!--</bean>-->
+
+
+	<!--<bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">-->
+		<!--<property name="processEngineConfiguration" ref="processEngineConfiguration" />-->
+	<!--</bean>-->
+
+	<!--<bean id="repositoryService" factory-bean="processEngine" factory-method="getRepositoryService" />-->
+	<!--<bean id="runtimeService" factory-bean="processEngine" factory-method="getRuntimeService" />-->
+	<!--<bean id="formService" factory-bean="processEngine" factory-method="getFormService" />-->
+	<!--<bean id="identityService" factory-bean="processEngine" factory-method="getIdentityService" />-->
+	<!--<bean id="taskService" factory-bean="processEngine" factory-method="getTaskService" />-->
+	<!--<bean id="historyService" factory-bean="processEngine" factory-method="getHistoryService" />-->
+	<!--<bean id="managementService" factory-bean="processEngine" factory-method="getManagementService" />-->
+	 <!--&lt;!&ndash;Activiti end &ndash;&gt;-->
+
 </beans>

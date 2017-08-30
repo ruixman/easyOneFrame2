@@ -11,7 +11,7 @@ import org.apache.shiro.mgt.SecurityManager;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-@Configuration
+//@Configuration
 public class ShiroConfiguration {
     //    private static final Logger logger = LoggerFactory.getLogger(ShiroConfiguration.class);
 

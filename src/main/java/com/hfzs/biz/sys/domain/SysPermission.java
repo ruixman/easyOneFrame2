@@ -3,13 +3,7 @@ package com.hfzs.biz.sys.domain;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 
 /**
  * 权限实体类;
@@ -17,6 +11,7 @@ import javax.persistence.ManyToMany;
  * @version v.0.1
  */
 @Entity
+@Table(name="t_sys_permission")
 public class SysPermission implements Serializable{
     private static final long serialVersionUID = 1L;
 
