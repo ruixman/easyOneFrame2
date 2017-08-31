@@ -63,9 +63,9 @@ Let's see the options of each section.
 
 * __usernameField__:
 
-  Default: `"#username"` (String)
+  Default: `"#loginName"` (String)
 
-  The username field to match a password to, to ensure the user does not use
+  The loginName field to match a password to, to ensure the user does not use
   the same value for their password.
 
 * __userInputs__:
@@ -242,7 +242,7 @@ Let's see the options of each section.
   {
     wordLength: "Your password is too short",
     wordNotEmail: "Do not use your email as your password",
-    wordSimilarToUsername: "Your password cannot contain your username",
+    wordSimilarToUsername: "Your password cannot contain your loginName",
     wordTwoCharacterClasses: "Use different character classes",
     wordRepetitions: "Too many repetitions",
     wordSequences: "Your password contains sequences"

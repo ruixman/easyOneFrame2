@@ -10,7 +10,7 @@ import java.util.Date;
  * Created by Administrator on 2017/8/9.
  */
 @Entity
-@Table(name = "T_SYS_USER_INFO")
+@Table(name = "TEST_USER_INFO")
 public class SysUser {
 
         private String id;

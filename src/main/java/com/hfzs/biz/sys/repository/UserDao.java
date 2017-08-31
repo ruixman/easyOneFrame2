@@ -9,5 +9,5 @@ import com.hfzs.framework.core.web.orm.MyJpaRepository;
 
 public interface UserDao  extends MyJpaRepository<UserInfo,String>{
 
-    public UserInfo findByUsername(String username);
+    public UserInfo findByLoginName(String loginName);
 }

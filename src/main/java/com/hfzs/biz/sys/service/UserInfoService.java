@@ -15,8 +15,7 @@ public class UserInfoService extends BaseServiceImpl<UserInfo>{
     @Autowired
     private UserDao userDao;
 
-
     public UserInfo findByUsername(String username) {
-        return userDao.findByUsername(username);
+        return userDao.findByLoginName(username);
     }
 }

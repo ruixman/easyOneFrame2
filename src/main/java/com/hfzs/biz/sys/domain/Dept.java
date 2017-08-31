@@ -21,7 +21,6 @@ public class Dept implements Serializable {
 	private String pName;
 	private String type;
 	private String pUnit;
-	private String pUnitName;
 	private Integer flag = 0;
 	private Date createTime;
 	private Date updateTime;
@@ -30,25 +29,15 @@ public class Dept implements Serializable {
 	private String createrName;
 	private String updaterName;
 	private String deptCode;//DEPT_CODE;
-	private Integer doubleAuditable; //是否双审核
-	
 
-	@Column(name = "double_auditable", nullable = false)
-	public Integer getDoubleAuditable() {
-		return doubleAuditable;
+	@Id
+	@GeneratedValue(generator = "UIDGenerator")
+	@GenericGenerator(name = "UIDGenerator", strategy = "org.hibernate.id.UUIDHexGenerator")
+	public String getId() {
+		return id;
 	}
-
-	public void setDoubleAuditable(Integer doubleAuditable) {
-		this.doubleAuditable = doubleAuditable;
-	}
-
-	@Transient
-	public String getpUnitName() {
-		return pUnitName;
-	}
-
-	public void setpUnitName(String pUnitName) {
-		this.pUnitName = pUnitName;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	@Column(name = "CREATER_ID", insertable = true, updatable = true)
@@ -82,26 +71,14 @@ public class Dept implements Serializable {
 	public String getUpdaterName() {
 		return updaterName;
 	}
-
 	public void setUpdaterName(String updaterName) {
 		this.updaterName = updaterName;
 	}
 
-	@Id
-	@GeneratedValue(generator = "UIDGenerator")
-	@GenericGenerator(name = "UIDGenerator", strategy = "org.hibernate.id.UUIDHexGenerator")
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -110,7 +87,6 @@ public class Dept implements Serializable {
 	public String getPid() {
 		return pid;
 	}
-
 	public void setPid(String pid) {
 		this.pid = pid;
 	}

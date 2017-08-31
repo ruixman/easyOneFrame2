@@ -28,26 +28,10 @@ public class CmsArticle implements Serializable {
     private boolean disabled;    //是否禁用
     private Integer publishAt;  //发布时间
     private Integer location;   //排序字段
-//    private String channelId;   //类别ID:manyToOne双向
 
     @ManyToOne(fetch=FetchType.EAGER)    //延迟加载，提高性能
-//    @JoinTable(name = "t_cms_channel"
-//            ,
-//            joinColumns = @JoinColumn(
-//                    name = "channelId",
-//                    insertable = false,
-//                    updatable = false)
-//    )
     @JoinColumn(name="channel_id")
     private CmsChannel channel;
-
-//    public String getChannelId() {
-//        return channelId;
-//    }
-//
-//    public void setChannelId(String channelId) {
-//        this.channelId = channelId;
-//    }
 
     public String getId() {
         return id;
