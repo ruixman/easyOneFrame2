@@ -19,17 +19,18 @@ public class CmsArticle implements Serializable {
     private String id;
 
     private String title;
+    private String info;           //文章简介
+    private String author;         //文章作者
+    private String picurl;            //标题图片
 
-//文章简介
-    private String info;
-    private String author;   //文章简介
-    private String picurl;    //标题图
-    private String content;   //文章内容
-    private boolean disabled;    //是否禁用
-    private Integer publishAt;  //发布时间
-    private Integer location;   //排序字段
+    @Lob
+    private String content;           //文章内容
+    private boolean disabled;         //是否禁用
+    private Integer publishAt;        //发布时间,记录为时间戳
+    private Integer location;         //排序字段,序号越小越靠前
+    private boolean recommandAble=false;   //是否推荐
 
-    @ManyToOne(fetch=FetchType.EAGER)    //延迟加载，提高性能
+    @ManyToOne(fetch=FetchType.EAGER)    //立即加载
     @JoinColumn(name="channel_id")
     private CmsChannel channel;
 
@@ -111,5 +112,13 @@ public class CmsArticle implements Serializable {
 
     public void setChannel(CmsChannel channel) {
         this.channel = channel;
+    }
+
+    public boolean isRecommandAble() {
+        return recommandAble;
+    }
+
+    public void setRecommandAble(boolean recommandAble) {
+        this.recommandAble = recommandAble;
     }
 }

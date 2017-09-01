@@ -1,5 +1,7 @@
 package com.hfzs.biz.cms.domain;
 
+import com.hfzs.framework.domain.BaseModel;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
 
 
@@ -11,39 +13,23 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "t_cms_single_content")
-public class CmsSingleContent {
+public class CmsSingleContent extends BaseModel{
     @Id
     @GeneratedValue(generator = "UIDGenerator")
     @GenericGenerator(name = "UIDGenerator", strategy = "org.hibernate.id.UUIDHexGenerator")
     private String id;
 
     @Column(unique = true)          //不可相同
-    private String contentType;     //文章类型
+    private String contentType;     //类型,如了解智圣-》目的意义
 
-    @Column(length = 4000)
-    private String content;
+    @Lob
+    private String content;         //文章内容
 
-    private String title;
+    private String title;           //标题
 
-    private Date createTime;
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getCreateName() {
-        return createName;
-    }
-
-    public void setCreateName(String createName) {
-        this.createName = createName;
-    }
-
-    private String createName;
+    @ManyToOne
+    @JoinColumn(name = "class_id")  //类别id
+    private CmsChannel cmsChannel;
 
     public String getId() {
         return id;

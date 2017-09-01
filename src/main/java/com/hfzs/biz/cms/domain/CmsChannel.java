@@ -49,6 +49,17 @@ public class CmsChannel extends BaseModel implements Serializable {
     @OneToMany(targetEntity = CmsArticle.class, mappedBy = "channel",fetch = FetchType.LAZY)
     private Set<CmsArticle> articleItem;
 
+    @OneToMany(targetEntity = CmsSingleContent.class, mappedBy = "cmsChannel",fetch = FetchType.LAZY)
+    private Set<CmsSingleContent> singleContents;
+
+    public Set<CmsSingleContent> getSingleContents() {
+        return singleContents;
+    }
+
+    public void setSingleContents(Set<CmsSingleContent> singleContents) {
+        this.singleContents = singleContents;
+    }
+
     public Set<CmsArticle> getArticleItem() {
         return articleItem;
     }
