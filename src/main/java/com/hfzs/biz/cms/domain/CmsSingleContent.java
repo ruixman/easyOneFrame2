@@ -31,6 +31,14 @@ public class CmsSingleContent extends BaseModel{
     @JoinColumn(name = "class_id")  //类别id
     private CmsChannel cmsChannel;
 
+    public CmsChannel getCmsChannel() {
+        return cmsChannel;
+    }
+
+    public void setCmsChannel(CmsChannel cmsChannel) {
+        this.cmsChannel = cmsChannel;
+    }
+
     public String getId() {
         return id;
     }
