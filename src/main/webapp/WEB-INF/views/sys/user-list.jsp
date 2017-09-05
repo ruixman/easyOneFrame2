@@ -16,8 +16,20 @@
     <link rel="stylesheet" type="text/css" href="${ctx}/assets/global/plugins/datatables/extensions/ColReorder/css/dataTables.colReorder.min.css"/>
     <link rel="stylesheet" type="text/css" href="${ctx}/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css"/>
     <!-- END PAGE LEVEL STYLES -->
-
+    <!-- BEGIN CORE PLUGINS -->
+    <%@include file="../common/import-js-core.jspf" %>
+    <!-- END CORE PLUGINS -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script type="text/javascript" src="${ctx}/assets/global/plugins/select2/select2.min.js"></script>
+    <script type="text/javascript" src="${ctx}/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="${ctx}/assets/global/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
+    <script type="text/javascript" src="${ctx}/assets/global/plugins/datatables/extensions/ColReorder/js/dataTables.colReorder.min.js"></script>
+    <script type="text/javascript" src="${ctx}/assets/global/plugins/datatables/extensions/Scroller/js/dataTables.scroller.min.js"></script>
+    <script type="text/javascript" src="${ctx}/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+    <script type="text/javascript" src="${ctx}/assets/global/plugins/moment.min.js"></script><!-- 时间相关api-->
+    <!-- END PAGE LEVEL PLUGINS -->
 </head>
+
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
 <!-- DOC: Apply "page-header-fixed-mobile" and "page-footer-fixed-mobile" class to body element to force fixed header or footer in mobile devices -->
@@ -42,8 +54,9 @@
     <div class="page-sidebar-wrapper">
         <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
         <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
-        <div class="page-sidebar navbar-collapse collapse">
+        <div id="menu" class="page-sidebar navbar-collapse collapse">
         </div>
+
     </div>
     <!-- END SIDEBAR -->
 
@@ -69,11 +82,12 @@
             <!-- BEGIN PAGE CONTENT-->
             <div class="row">
                 <div class="col-md-12">
+
                     <!-- BEGIN EXAMPLE TABLE PORTLET-->
                     <div class="portlet">
                         <div class="portlet-title">
                             <div class="caption">
-                                <i class="fa fa-list"></i>查询a
+                                <i class="fa fa-list"></i>查询
                                 <label>
                                     姓名：
                                     <input id="extra1" type="text"  class="form-control input-inline">
@@ -81,8 +95,6 @@
                                         <i id="searchBtn" class="fa fa-search" ></i>
                                     </a>
                                 </label>
-
-
                             </div>
                             <div class="tools">
                             </div>
@@ -91,7 +103,8 @@
                             <div class="dataTables_wrapper">
                                 <div class="row">
                                         <div class="col-md-12 col-sm-12">
-
+                                            <button name="delete" onclick="javascript:delCheck();">删除 </button>
+                                            <button onclick="getTableContent();"> 测试</button>
                                         </div>
                                 </div>
                             </div>
@@ -99,7 +112,7 @@
                             <table class="table table-striped table-bordered table-hover table-advance" id="sample_1">
                                 <thead>
                                 <tr>
-                                    <th><input type="checkbox" class="my-checkbox" /></th>
+                                    <th><input id="checkbox_id_all" type="checkbox" /></th>
                                     <th>用户ID</th>
                                     <th>用户名</th>
                                     <th>创建时间</th>
@@ -109,19 +122,12 @@
                                 <tbody>
                                 </tbody>
                             </table>
-
-
                         </div>
                     </div>
                     <!-- END EXAMPLE TABLE PORTLET-->
                 </div>
             </div>
             <!-- END PAGE CONTENT-->
-
-
-            <div id="myTree"></div>
-
-
         </div>
     </div>
 
@@ -133,74 +139,61 @@
 <%@include file="../common/footer.jsp"%>
 <!-- END FOOTER -->
 
-<!-- BEGIN CORE PLUGINS -->
-<%@include file="../common/import-js-core.jspf" %>
-<!-- END CORE PLUGINS -->
-<!-- BEGIN PAGE LEVEL PLUGINS -->
-<script type="text/javascript" src="${ctx}/assets/global/plugins/select2/select2.min.js"></script>
-<script type="text/javascript" src="${ctx}/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="${ctx}/assets/global/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
-<script type="text/javascript" src="${ctx}/assets/global/plugins/datatables/extensions/ColReorder/js/dataTables.colReorder.min.js"></script>
-<script type="text/javascript" src="${ctx}/assets/global/plugins/datatables/extensions/Scroller/js/dataTables.scroller.min.js"></script>
-<script type="text/javascript" src="${ctx}/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
-<!-- END PAGE LEVEL PLUGINS -->
-<!-- END JAVASCRIPTS -->
-
 <script type="text/javascript">
     var table;
     var param ={};
     jQuery(document).ready(function() {
-        $(".page-sidebar").load("${ctx}/sidebar.jsp");
+        $("#menu").load("${ctx}/sidebar.jsp");
         Metronic.init(); // init metronic core components
         Layout.init(); // init current layout
         QuickSidebar.init(); // init quick sidebar
         Demo.init(); // init demo features
 
         //初始化表格
-        table = $("#sample_1").dataTable({
-            dom: '<"top">rt<"bottom"flp><"clear">',//每页显示多少条选项 放置左下角
+        table = $("#sample_1").DataTable({
+            //dom: '<"top">rt<"bottom"flp><"clear">',//每页显示多少条选项 放置左下角
+            dom: '<"toolbar">frtip',
             language: {                           // 国际化
                 "url":'${ctx}/frame/i18n/Chinese.json'
             },  //提示信息
             autoWidth: false,  //禁用自动调整列宽
-            stripeClasses: ["odd", "even"],  //为奇偶行加上样式，兼容不支持CSS伪类的场合
-            processing: false,  //隐藏加载提示,自行处理
-            serverSide: true,  //启用服务器端分页
+            //stripeClasses: ["odd", "even"],  //为奇偶行加上样式，兼容不支持CSS伪类的场合
+            select:true,
+            processing: false,       //隐藏加载提示,自行处理
+            serverSide: true,        //启用服务器端分页
             bDestroy: true,
             SortCellsTop: true,
-            searching: false,  //禁用原生搜索
-            orderMulti: false,  //启用多列排序
-            order: [],  //取消默认排序查询,否则复选框一列会出现小箭头
-            renderer: "bootstrap",  //渲染样式：Bootstrap和jquery-ui
+            searching: false,        //禁用原生搜索
+            orderMulti: false,       //启用多列排序
+            order: [],               //取消默认排序查询,否则复选框一列会出现小箭头
+            renderer: "bootstrap",   //渲染样式：Bootstrap和jquery-ui
             pagingType: "full_numbers",  //分页样式：simple,simple_numbers,full,full_numbers
             info: true,
-            createdRow: function( row, data, dataIndex ) {
-                $(row).children('td').attr('style', 'text-align: center;')
-                //让第一列和第二列居中显示：
-                //$(row).children('td').eq(0).attr('style', 'text-align: center;')
-                //$(row).children('td').eq(1).attr('style', 'text-align: center;')
-            },
+//            createdRow: function( row, data, dataIndex ) {
+//                $(row).children('td').attr('style', 'text-align: center;')
+//                //让第一列和第二列居中显示：
+//                //$(row).children('td').eq(0).attr('style', 'text-align: center;')
+//                //$(row).children('td').eq(1).attr('style', 'text-align: center;')
+//            },
             columnDefs: [{
-                "targets": [0,4],  //列的样式名
-                "orderable": false    //包含上样式名‘nosort’的禁止排序
+                "targets": [0,4],     //列的样式名
+                "orderable": false   //包含[0,4]列样式名‘nosort’的禁止排序
             }],
             ajax: function (data, callback, settings) {
                 //显示加载动画
-                //var loading = layer.load(0, {shade: false}); //0代表加载的风格，支持0-2
                 $.blockUI({ message: '<h1>正在载入数据...</h1>' });
                 param =userManage.getQueryCondition(data);
                 $.ajax({
                     type: "POST",
                     url: "${ctx}/sys/user/list.json",  //封装表单数据
-                    cache: false,  //禁用缓存
-                    //data: param,//传入组装的参数
-                    data: JSON.stringify(param),//将对象序列化成JSON字符串
+                    cache: false,                      //禁用缓存
+                    //data: param,                     //传入组装的参数
+                    data: JSON.stringify(param),      //将对象序列化成JSON字符串
                     dataType:"json",
                     contentType : 'application/json;charset=utf-8', //设置请求头信息
                     success: function (result) {
-                        //alert(JSON.stringify(result.data));
-                        //关闭加载层
-                        $.unblockUI();
+
+                        $.unblockUI();               //关闭加载层
                         //封装返回数据
                         var returnData = {};
                         returnData.draw = data.draw;//这里直接自行返回了draw计数器,应该由后台返回
@@ -218,17 +211,18 @@
             columns: [
                 { "data": "id" ,"mRender":function(data,type,full){
                     var html="";
-                    html+='<input type="checkbox" class="my-checkbox" data-id="'+data+'" />';
+                    html+='<input type="checkbox" data-id="'+data+'" />';
                     return html;
-                }
+                  }
                 },
                 { "data": "id"},
                 { "data": "name"},
                 { "data": "createTime",
                     "mRender":function (data,type,row,meta) {
-                        return $.myTime.UnixToDate(data/1000);
+                        return moment.unix(data/1000).format("YYYY-MM-DD HH:mm:ss");
                     }
-                },
+                }
+                ,
                 { "data": "id","mRender":function(data,type,full){
                     var html="";
                     html+='<a class="btn green" href="#" onclick=detail("'+data+'")>查看</a>';
@@ -237,7 +231,7 @@
                     }
                 }
             ]
-        }).api();
+        });
 
         //查询按钮事件
         $("#searchBtn").click(function(){
@@ -246,8 +240,8 @@
             $.unblockUI();
         });
 
-
         $('#myTree').jstree({
+            plugins: ["wholerow"],
             'core' : {
                 'data' : {
                     "url" : "${ctx}/sys/user/TreeTest",
@@ -267,6 +261,46 @@
         });
 
     });
+
+    function delCheck() {
+        var chks = table.rows('.selected').data();
+        if (chks.length > 0) {
+            var ids = [];
+            $.each(datatable.rows('.selected').data(), function (i, n) {
+                ids.push(n.id);
+            });
+            var dialog = $("#dialogDelete");
+            dialog.modal("show");
+            dialog.find("#ok").unbind("click");
+            dialog.find("#ok").bind("click", function (event) {
+                var btn = $(this);
+                btn.button("loading");
+                $.post("${base}/platform/cms/article/delete", {ids: ids.toString()}, function (data) {
+                    if (data.code == 0) {
+                        datatable.ajax.reload(null,false);
+                    } else {
+                        Toast.error(data.msg);
+                    }
+                    btn.button("reset");
+                    dialog.modal("hide");
+                }, "json");
+            });
+        } else {
+            Toast.warning("请先选择要删除的文章！");
+        }
+    }
+
+
+    function getTableContent(){
+        Toast.warning("这是信息","标题","");
+        debugger
+        var oTable = $('#sample_1').dataTable();
+        var nTrs = oTable.fnGetNodes();//fnGetNodes获取表格所有行，nTrs[i]表示第i行tr对象
+        for(var i = 0; i < nTrs.length; i++){
+            console.log("所得的值是：：："+nTrs[0].find['']);
+            console.log('[获取数据]' + oTable.fnGetData(nTrs[i]));//fnGetData获取一行的数据
+        }
+    }
 
     function detail(regCode){
         $("#detail-data").load("${ctx}/sys/user/"+regCode);
@@ -342,62 +376,56 @@
         }
     };
 
-    (function($) {
-        $.extend({
-            myTime: {
-                /**
-                 * 当前时间戳
-                 * @return <int>    unix时间戳(秒)
-                 */
-                CurTime: function(){
-                    return Date.parse(new Date())/1000;
-                },
-                /**
-                 * 日期 转换为 Unix时间戳
-                 * @param <string> 2014-01-01 20:20:20 日期格式
-                 * @return <int>    unix时间戳(秒)
-                 */
-                DateToUnix: function(string) {
-                    var f = string.split(' ', 2);
-                    var d = (f[0] ? f[0] : '').split('-', 3);
-                    var t = (f[1] ? f[1] : '').split(':', 3);
-                    return (new Date(
-                        parseInt(d[0], 10) || null,
-                        (parseInt(d[1], 10) || 1) - 1,
-                        parseInt(d[2], 10) || null,
-                        parseInt(t[0], 10) || null,
-                        parseInt(t[1], 10) || null,
-                        parseInt(t[2], 10) || null
-                    )).getTime() / 1000;
-                },
-                /**
-                 * 时间戳转换日期
-                 * @param <int> unixTime  待时间戳(秒)
-                 * @param <bool> isFull  返回完整时间(Y-m-d 或者 Y-m-d H:i:s)
-                 * @param <int> timeZone  时区
-                 */
-                UnixToDate: function(unixTime, isFull, timeZone) {
-                    if (typeof (timeZone) == 'number')
-                    {
-                        unixTime = parseInt(unixTime) + parseInt(timeZone) * 60 * 60;
+    /**
+     *全选
+     /全不选    */
+    $('#checkbox_id_all').click(function(){
+        $(":checkbox:not(#checkbox_id_all)").attr("checked",this.checked);
+    });
+
+    /**
+     * 多选选中和取消选中,同时选中第一个单元格单选框,并联动全选单选框
+     */
+    $('#sample_1 tbody').on('click', 'tr', function(event) {
+        var allChecked=$('input[name=allChecked]')[0];//关联全选单选框
+        $($(this).children()[0]).children().each(function(){
+            if(this.type=="checkbox" && (!$(event.target).is(":checkbox") && $(":checkbox",this).trigger("click"))){
+                if(!this.checked){
+                    this.checked = true;
+                    //addValue(this);
+                    var selected=table.rows('.selected').data().length;//被选中的行数
+                    //全选单选框的状态处理
+                    var recordsDisplay=table.page.info().recordsDisplay;//搜索条件过滤后的总行数
+                    var iDisplayStart=table.page.info().start;// 起始行数
+                    if(selected === table.page.len()||selected === recordsDisplay||selected === (recordsDisplay - iDisplayStart)){
+                       // allChecked.checked = true;
                     }
-                    var time = new Date(unixTime * 1000);
-                    var ymdhis = "";
-                    ymdhis += time.getUTCFullYear() + "-";
-                    ymdhis += (time.getUTCMonth()+1) + "-";
-                    ymdhis += time.getUTCDate();
-                    if (isFull === true)
-                    {
-                        ymdhis += " " + time.getUTCHours() + ":";
-                        ymdhis += time.getUTCMinutes() + ":";
-                        ymdhis += time.getUTCSeconds();
-                    }
-                    return ymdhis;
+                }else{
+                    this.checked = false;
+                    //cancelValue(this);
+                    //allChecked.checked = false;
                 }
             }
         });
-    })(jQuery);
+        $(this).toggleClass('selected');//放在最后处理，以便给checkbox做检测
+    });
 
+    //单击行，选中复选框
+    $("#sample_1 tr").slice(1).each(function(g){
+        var p=this;
+        $(this).children().slice(1).click(function(){
+            $($(p).children()[0]).children().each(function()
+            {
+                if(this.type=="checkbox"){
+                    if(!this.checked){
+                        this.checked=true;
+                    }else{
+                        this.checked=false;
+                    }
+                }
+            });
+        });
+    });
 
     var util = {
         serializeObject: function(form) {
@@ -445,6 +473,7 @@
         }
     };
 </script>
+<!-- END JAVASCRIPTS -->
 
 <div id="add" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -522,6 +551,28 @@
             </div>
             <div class="modal-footer bg-info">
                 <button type="button" class="btn green" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="dialogDelete" class="modal fade bs-modal-sm" tabindex="-2" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">删除</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        删除后无法恢复，确定删除吗？ <br/>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取 消</button>
+                <button id="ok" type="button" class="btn btn-primary" data-loading-text="正在删除...">确 定</button>
             </div>
         </div>
     </div>
