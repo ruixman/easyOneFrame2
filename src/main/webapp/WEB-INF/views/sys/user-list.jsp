@@ -33,6 +33,92 @@
         .myodd{background-color: silver}
         .myeven{background-color: #e8e8e8}
         .selectTr{background-color: lemonchiffon }
+
+
+
+        .cd-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            visibility: hidden;
+            -webkit-transition: visibility 0s 0.6s;
+            -moz-transition: visibility 0s 0.6s;
+            transition: visibility 0s 0.6s;
+            z-index: 9999;
+            margin-top:50px;
+        }
+        .cd-panel::after {
+            /* overlay layer */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            cursor: pointer;
+            -webkit-transition: background 0.3s 0.3s;
+            -moz-transition: background 0.3s 0.3s;
+            transition: background 0.3s 0.3s;
+        }
+        .cd-panel.is-visible {
+            visibility: visible;
+            -webkit-transition: visibility 0s 0s;
+            -moz-transition: visibility 0s 0s;
+            transition: visibility 0s 0s;
+        }
+        .cd-panel.is-visible::after {
+            background: rgba(0, 0, 0, 0.6);
+            -webkit-transition: background 0.3s 0s;
+            -moz-transition: background 0.3s 0s;
+            transition: background 0.3s 0s;
+        }
+        .cd-panel.is-visible .cd-panel-close::before {
+            -webkit-animation: cd-close-1 0.6s 0.3s;
+            -moz-animation: cd-close-1 0.6s 0.3s;
+            animation: cd-close-1 0.6s 0.3s;
+        }
+        .cd-panel.is-visible .cd-panel-close::after {
+            -webkit-animation: cd-close-2 0.6s 0.3s;
+            -moz-animation: cd-close-2 0.6s 0.3s;
+            animation: cd-close-2 0.6s 0.3s;
+        }
+
+        .cd-panel-header {
+            position: fixed;
+            width: 250px;
+            height: 50px;
+            line-height: 50px;
+            background: rgba(255, 255, 255, 0.96);
+            z-index: 2;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+            -webkit-transition: top 0.3s 0s;
+            -moz-transition: top 0.3s 0s;
+            transition: top 0.3s 0s;
+            margin-top:50px;
+        }
+        .cd-panel-header h4 {
+            font-weight: bold;
+            padding-left: 5%;
+            padding-top: 2%;
+        }
+        .from-right .cd-panel-header, .from-left .cd-panel-header {
+            top: -50px;
+        }
+        .from-right .cd-panel-header {
+            right: 0;
+        }
+        .from-left .cd-panel-header {
+            left: 0;
+        }
+        .is-visible .cd-panel-header {
+            top: 0;
+            -webkit-transition: top 0.3s 0.3s;
+            -moz-transition: top 0.3s 0.3s;
+            transition: top 0.3s 0.3s;
+        }
+
     </style>
 </head>
 
@@ -55,7 +141,7 @@
 <div class="clearfix"></div>
 <!-- BEGIN CONTAINER -->
 
-<div class="page-container">
+<section class="page-container">
     <!-- BEGIN SIDEBAR -->
     <div class="page-sidebar-wrapper">
         <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
@@ -89,30 +175,21 @@
 
                     <!-- BEGIN EXAMPLE TABLE PORTLET-->
                     <div class="portlet">
-                        <div class="portlet-title">
-                            <div class="caption">
-                                <i class="fa fa-list"></i>查询
-                                <label>
-                                    姓名：
-                                    <input id="extra1" type="text"  class="form-control input-inline">
-                                    <a class="btn btn-icon-only " href="javascript:;">
-                                        <i id="searchBtn" class="fa fa-search" ></i>
-                                    </a>
-                                </label>
+                        <header class="header navbar bg-white shadow">
+                            <div class="btn-group tool-button">
+                                <a class="btn btn-primary navbar-btn" href="${base}/platform/cms/article/add" data-pjax id="addLink"><i class="ti-plus"></i> 添加文章</a>
+                                <button class="btn btn-danger navbar-btn" onclick="delCheck()"><i class="ti-close"></i> 删除文章</button>
                             </div>
-                            <div class="tools">
+                            <div class="pull-right offscreen-right">
+                                <button class="btn btn-primary navbar-btn" onclick="sublime.toggleFilter('.cd-panel')"><i
+                                        class="fa fa-sliders"></i> 筛选
+                                </button>
                             </div>
-                        </div>
+                        </header>
+
+
+
                         <div class="portlet-body">
-                            <div class="dataTables_wrapper">
-                                <div class="row">
-                                        <div class="col-md-12 col-sm-12">
-                                            <button class="btn btn-danger navbar-btn" onclick="delCheck()">
-                                                <i class="ti-close"></i> 删除</button>
-                                            <button onclick="getTableContent();"> 测试</button>
-                                        </div>
-                                </div>
-                            </div>
                             <%--table-striped--%>
                             <table class="table table-bordered table-hover table-advance" id="sample_1">
                                 <thead>
@@ -178,9 +255,52 @@
         </div>
     </div>
 
+
+
     <!-- END CONTENT -->
-</div>
+</section>
 <!-- END CONTAINER -->
+
+
+<div class="cd-panel from-right" aria-hidden="true">
+    <header class="cd-panel-header">
+        <h4>高级筛选</h4>
+        <a href="javascript:;" class="cd-panel-close text-center"><i class="ti-close"></i> </a>
+    </header>
+
+    <%--<div class="portlet-title">--%>
+    <%--<div class="caption">--%>
+    <%--<i class="fa fa-list"></i>查询--%>
+    <%--<label>--%>
+    <%--姓名：--%>
+    <%--<input id="extra1" type="text"  class="form-control input-inline">--%>
+    <%--<a class="btn btn-icon-only " href="javascript:;">--%>
+    <%--<i id="searchBtn" class="fa fa-search" ></i>--%>
+    <%--</a>--%>
+    <%--</label>--%>
+    <%--</div>--%>
+    <%--<div class="tools">--%>
+    <%--</div>--%>
+    <%--</div>--%>
+    <div class="cd-panel-container">
+        <div class="cd-panel-content shadow">
+            <div class="form-group">
+                <label for="title">文章标题</label>
+                <input type="text" id="title" name="title" class="form-control" placeholder="文章标题" autofocus>
+                <i class="fa fa-list"></i>查询
+                <label>
+                    姓名：
+                    <input id="extra1" type="text"  class="form-control input-inline">
+                    <%--<a class="btn btn-icon-only " href="javascript:;">--%>
+                    <%--<i id="searchBtn" class="fa fa-search" ></i>--%>
+                    <%--</a>--%>
+                </label>
+            </div>
+            <button id="searchBtn" type="button" class="btn btn-default">查询</button>
+        </div>
+    </div>
+</div>
+
 
 <!-- BEGIN FOOTER -->
 <%@include file="../common/footer.jsp"%>
@@ -299,10 +419,8 @@
 
         $('#myTree').on("changed.jstree", function (e, data) {
             alert("id:" +data.selected[0]+  "\ntext:" +data.instance.get_node(data.selected[0]).text);
-
             //刷新整个树
             //$('#myTree').jstree().refresh();
-
             //手册
             //http://blog.csdn.net/qq_24472595/article/details/70053863#t9
         });
