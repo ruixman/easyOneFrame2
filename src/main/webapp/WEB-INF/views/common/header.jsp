@@ -28,7 +28,7 @@
 
 <!--project main css-->
 <link href="${ctx}/frame/static/css/style.css" rel="stylesheet" type="text/css"/>
-<link href="${ctx}/frame/static/css/main.css" rel="stylesheet" type="text/css"/>
+<link href="${ctx}/assets/cd_panel.css" rel="stylesheet" type="text/css"/>
 <!--end project main css -->
 
 <!-- END THEME STYLES -->

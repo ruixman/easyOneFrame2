@@ -86,7 +86,7 @@
     transition: top 0.3s 0.3s;
 }
 
-.cd-panel-container {
+.cd-panel {
     position: fixed;
     width: 250px;
     height: 100%;
@@ -104,7 +104,7 @@
     transition-delay: 0.3s;
     margin-top:50px;
 }
-.from-right .cd-panel-container {
+.from-right .cd-panel {
     right: 0;
     -webkit-transform: translate3d(100%, 0, 0);
     -moz-transform: translate3d(100%, 0, 0);
@@ -112,7 +112,7 @@
     -o-transform: translate3d(100%, 0, 0);
     transform: translate3d(100%, 0, 0);
 }
-.from-left .cd-panel-container {
+.from-left .cd-panel {
     left: 0;
     -webkit-transform: translate3d(-100%, 0, 0);
     -moz-transform: translate3d(-100%, 0, 0);
@@ -120,7 +120,7 @@
     -o-transform: translate3d(-100%, 0, 0);
     transform: translate3d(-100%, 0, 0);
 }
-.is-visible .cd-panel-container {
+.is-visible .cd-panel {
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     -ms-transform: translate3d(0, 0, 0);
