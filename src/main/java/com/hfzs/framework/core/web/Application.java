@@ -1,6 +1,7 @@
 package com.hfzs.framework.core.web;
 
 import com.hfzs.framework.Constants;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.PropertyEditorRegistrar;
 import org.springframework.beans.PropertyEditorRegistry;
 import org.springframework.boot.CommandLineRunner;
@@ -17,12 +18,18 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.stereotype.Component;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.bind.support.ConfigurableWebBindingInitializer;
+import org.springframework.web.servlet.HandlerExceptionResolver;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
+import java.util.logging.Logger;
 
 /**
  * Created by Administrator on 2017/7/21.
@@ -108,4 +115,18 @@ public class Application  extends SpringBootServletInitializer implements WebApp
 //            super.addInterceptors(registry);
 //        }
     }
+
+
+//    @Component
+//    public class ExceptionHandler implements HandlerExceptionResolver {
+//       // private static Logger log = LoggerFactory.getLogger(ExceptionHandler.class);
+//
+//        @Override
+//        public ModelAndView resolveException(HttpServletRequest req, HttpServletResponse resp, Object handler, Exception ex) {
+//            // 异常处理逻辑 goes here
+//            //log.info("got exception: {}", ex.getClass());
+//
+//            return new ModelAndView("pc/500");
+//        }
+//    }
 }

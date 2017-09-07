@@ -442,7 +442,8 @@ window.ZeroClipboard_TableTools = ZeroClipboard_TableTools;
 
 (function($, window, document) {
 
-/** 
+//noinspection JSAnnotator
+	/**
  * TableTools provides flexible buttons and other tools for a DataTables enhanced table
  * @class TableTools
  * @constructor

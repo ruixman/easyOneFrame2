@@ -32,18 +32,18 @@ public class HomeController {
     @RequestMapping(value = {"/","/index.htm","/index.html","/index"})
     public ModelAndView index(){
 
-        CmsArticle article= cmsArticleService.getOne("402884825e311d8d015e311da4cc0001");
-
-        String title = article.getTitle();
-        CmsChannel channel = article.getChannel();
-        System.out.print(channel.getName());
-
-        CmsChannel channel1=channelDao.findOne("402884825e311d8d015e311da48c0000");
-        Set<CmsArticle> as=channel1.getArticleItem();
-
-        for(CmsArticle a:as){
-            System.out.print("标题是："+a.getTitle());
-        }
+//        CmsArticle article= cmsArticleService.getOne("402884825e311d8d015e311da4cc0001");
+//
+//        String title = article.getTitle();
+//        CmsChannel channel = article.getChannel();
+//        System.out.print(channel.getName());
+//
+//        CmsChannel channel1=channelDao.findOne("402884825e311d8d015e311da48c0000");
+//        Set<CmsArticle> as=channel1.getArticleItem();
+//
+//        for(CmsArticle a:as){
+//            System.out.print("标题是："+a.getTitle());
+//        }
 
         return  new ModelAndView("index");
     }

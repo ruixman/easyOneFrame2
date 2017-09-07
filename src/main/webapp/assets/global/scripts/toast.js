@@ -61,7 +61,7 @@ var Toast = {
     toastr.options = {
       closeButton: false,
       debug: false,
-      positionClass: "toast-top-center",
+      positionClass: "toast-top-center",    //可改为toast-top(bottom)-right(left),
       onclick: null,
       showDuration: 300,
       hideDuration: 1000,
