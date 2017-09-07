@@ -35,7 +35,7 @@
 <script>
   var base="${ctx}";  //注册全局变量
 </script>
-<script src="${ctx}/assets/cd-panel.js" type="text/javascript"></script>
+<script src="${ctx}/assets/cd_panel.js" type="text/javascript"></script>
 <script src="${ctx}/frame/static/js/table-tool.js" type="text/javascript"></script>
 <!-- 
 <script src="${ctx}/assets/admin/pages/scripts/ecommerce-.js"></script>
