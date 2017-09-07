@@ -33,10 +33,10 @@
 
 <script src="${ctx}/assets/global/plugins/jstree/dist/jstree.min.js" type="text/javascript"></script>
 <script>
-  var base="${ctx}";
+  var base="${ctx}";  //注册全局变量
 </script>
-<script src="${ctx}/assets/main.js" type="text/javascript"></script>
-
+<script src="${ctx}/frame/static/main.js" type="text/javascript"></script>
+<script src="${ctx}/frame/static/table-tool.js" type="text/javascript"></script>
 <!-- 
 <script src="${ctx}/assets/admin/pages/scripts/ecommerce-.js"></script>
  -->

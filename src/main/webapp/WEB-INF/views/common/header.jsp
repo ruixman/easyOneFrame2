@@ -21,13 +21,15 @@
 <link href="${ctx}/assets/global/css/components.css" id="style_components" rel="stylesheet" type="text/css"/>
 <link href="${ctx}/assets/global/css/plugins.css" rel="stylesheet" type="text/css"/>
 <link href="${ctx}/assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css"/>
-<link id="style_color" href="${ctx}/assets/admin/layout/css/themes/blue.css" rel="stylesheet" type="text/css"/>
+<link href="${ctx}/assets/admin/layout/css/themes/blue.css" rel="stylesheet" type="text/css" id="style_color" />
 <link href="${ctx}/assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
 
 <link href="${ctx}/assets/global/plugins/jstree/dist/themes/default/style.css" rel="stylesheet" type="text/css"/>
 
 <!--project main css-->
-<link href="${ctx}/assets/main.css" rel="stylesheet" type="text/css"/>
+<link href="${ctx}/frame/static/css/style.css" rel="stylesheet" type="text/css"/>
+<link href="${ctx}/frame/static/css/main.css" rel="stylesheet" type="text/css"/>
+<!--end project main css -->
 
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="favicon.ico"/>
